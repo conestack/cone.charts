@@ -19,8 +19,7 @@ cone.app.
 * As chartjs libary, `Chart.js <https://www.chartjs.org/>`_ (v3.9.1) is included.
 
 * For building time and date based charts,
-  `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3)
-  `(ab4f107) <https://github.com/Leaflet/Leaflet.TileLayer.NoGap/commit/ab4f107fecb80e12ffbdc4ebbedf5f85b8da7173>`_ is included.
+  `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3) is included.
 
 * Adapter for Luxon for Chart-js `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v3.0.3).
 
