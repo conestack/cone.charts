@@ -19,19 +19,6 @@ chartjs_resources.add(wr.ScriptResource(
     resource='chart.js',
     compressed='chart.min.js'
 ))
-
-chartjsadapterluxon_resources = wr.ResourceGroup(
-    name='cone.charts-chartjs-adapter-luxon',
-    directory=os.path.join(resources_dir, 'charjs-adapter-luxon'),
-    path='charjs-adapter-luxon',
-    group=resources
-)
-chartjsadapterluxon_resources.add(wr.ScriptResource(
-    name='charjs-adapter-luxon-js',
-    resource='chartjs-adapter-luxon.js',
-    compressed='chartjs-adapter-luxon.min.js'
-))
-
 luxon_resources = wr.ResourceGroup(
     name='cone.charts-luxon',
     directory=os.path.join(resources_dir, 'luxon'),
@@ -43,6 +30,21 @@ luxon_resources.add(wr.ScriptResource(
     resource='luxon.js',
     compressed='luxon.min.js'
 ))
+
+chartjsadapterluxon_resources = wr.ResourceGroup(
+    name='cone.charts-chartjs-adapter-luxon',
+    directory=os.path.join(resources_dir, 'charjs-adapter-luxon'),
+    path='charjs-adapter-luxon',
+    group=resources
+)
+chartjsadapterluxon_resources.add(wr.ScriptResource(
+    name='charjs-adapter-luxon-js',
+    depends='luxon-js',
+    resource='chartjs-adapter-luxon.js',
+    compressed='chartjs-adapter-luxon.min.js'
+))
+
+
 
 def configure_resources(settings):
     def included(name):
