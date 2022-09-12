@@ -16,8 +16,26 @@
 This package provides `Chart.js <https://www.chartjs.org/>`_ integration in to
 cone.app.
 
+* As chartjs libary, `Chart.js <https://www.chartjs.org/>`_ (v3.9.1) is included.
+
+* For building time and date based charts
+    `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3)
+    A library for working with dates and times in JS
+    `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v3.0.3)
+    Luxon adapter for Chart.js
+
+
+Resources
+---------
+
+The following ``cone.charts`` related application configuration options are
+available :
+
+- **cone.charts.luxon**: Flag whether date and/or time based chats can be 
+    generated. Defaults to `true`.
 
 Contributors
 ============
 
 - Robert Niederreiter
+- Torben Baumgartner
