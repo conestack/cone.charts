@@ -20,6 +20,17 @@ chartjs_resources.add(wr.ScriptResource(
     compressed='chart.min.js'
 ))
 
+chartjs_resources.add(wr.ScriptResource(
+    name='charjs-adapter-luxon',
+    resource='chartjs-adapter-luxon.js',
+    compressed='chartjs-adapter-luxon.min.js'
+))
+
+chartjs_resources.add(wr.ScriptResource(
+    name='luxon',
+    resource='luxon.js',
+    compressed='luxon.min.js'
+))
 
 def configure_resources(settings):
     set_resource_include(settings, 'chart-js', 'authenticated')
