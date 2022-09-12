@@ -20,17 +20,32 @@ chartjs_resources.add(wr.ScriptResource(
     compressed='chart.min.js'
 ))
 
-chartjs_resources.add(wr.ScriptResource(
-    name='charjs-adapter-luxon',
+chartjsadapterluxon_resources = wr.ResourceGroup(
+    name='cone.charts-chartjs-adapter-luxon',
+    directory=os.path.join(resources_dir, 'charjs-adapter-luxon'),
+    path='charjs-adapter-luxon',
+    group=resources
+)
+chartjsadapterluxon_resources.add(wr.ScriptResource(
+    name='charjs-adapter-luxon-js',
     resource='chartjs-adapter-luxon.js',
     compressed='chartjs-adapter-luxon.min.js'
 ))
 
-chartjs_resources.add(wr.ScriptResource(
-    name='luxon',
+luxon_resources = wr.ResourceGroup(
+    name='cone.charts-luxon',
+    directory=os.path.join(resources_dir, 'luxon'),
+    path='luxon',
+    group=resources
+)
+luxon_resources.add(wr.ScriptResource(
+    name='luxon-js',
     resource='luxon.js',
     compressed='luxon.min.js'
 ))
 
 def configure_resources(settings):
     set_resource_include(settings, 'chart-js', 'authenticated')
+    set_resource_include(settings, 'charjs-adapter-luxon-js', 'authenticated')
+    set_resource_include(settings, 'luxon-js', 'authenticated')
+
