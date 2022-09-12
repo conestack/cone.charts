@@ -23,14 +23,16 @@ cone.app.
 
 * Adapter for Luxon for Chart-js `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v1.2.0).
 
+
 Resources
 ---------
 
 The following ``cone.charts`` related application configuration options are
 available :
 
-- **cone.charts.luxon**: Flag whether date and/or time based chats can be 
-    generated. Defaults to `true`.
+- **cone.charts.luxon**: Flag whether to include ``Luxon``
+  plugin. Defaults to `true`.
+
 
 Contributors
 ============
