@@ -30,8 +30,8 @@ Resources
 The following ``cone.charts`` related application configuration options are
 available :
 
-- **cone.charts.luxon**: Flag whether to include ``Luxon``
-  plugin. Defaults to `true`.
+- **cone.charts.luxon**: Flag whether to disable ``Luxon``
+  plugin. Defaults to `false`.
 
 
 Contributors
