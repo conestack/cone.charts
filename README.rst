@@ -16,21 +16,13 @@
 This package provides `Chart.js <https://www.chartjs.org/>`_ integration in to
 cone.app.
 
-* As maps library, `Leaflet JS <https://leafletjs.com/>`_ (v1.7.1) is included.
-
-* For avoiding 1px gap between tiles,
-  `Leaflet.TileLayer.NoGap <https://github.com/Leaflet/Leaflet.TileLayer.NoGap>`_
-  `(ab4f107) <https://github.com/Leaflet/Leaflet.TileLayer.NoGap/commit/ab4f107fecb80e12ffbdc4ebbedf5f85b8da7173>`_ is included.
-  
 * As chartjs libary, `Chart.js <https://www.chartjs.org/>`_ (v3.9.1) is included.
 
 * For building time and date based charts,
-    `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3)
-    A library for working with dates and times in JS.
+  `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3)
+  `(ab4f107) <https://github.com/Leaflet/Leaflet.TileLayer.NoGap/commit/ab4f107fecb80e12ffbdc4ebbedf5f85b8da7173>`_ is included.
 
-* Adapter for Luxon for Chart-js,
-    `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v3.0.3).
-
+* Adapter for Luxon for Chart-js `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v3.0.3).
 
 Resources
 ---------
