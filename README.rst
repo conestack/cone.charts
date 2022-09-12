@@ -21,8 +21,9 @@ cone.app.
 * For building time and date based charts
     `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3)
     A library for working with dates and times in JS
+
+* Adapter for Luxon for Chart-js
     `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v3.0.3)
-    Luxon adapter for Chart.js
 
 
 Resources
