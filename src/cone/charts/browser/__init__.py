@@ -51,6 +51,6 @@ def configure_resources(settings):
     set_resource_include(settings, 'chart-js', 'authenticated')
 
     include =  False if included('cone.charts.luxon') else 'authenticated'
-    set_resource_include(settings, 'charjs-adapter-luxon-js', include)
     set_resource_include(settings, 'luxon-js', include)
+    set_resource_include(settings, 'charjs-adapter-luxon-js', include)
 
