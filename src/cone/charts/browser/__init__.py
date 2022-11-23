@@ -16,8 +16,8 @@ chartjs_resources = wr.ResourceGroup(
 )
 chartjs_resources.add(wr.ScriptResource(
     name='chart-js',
-    resource='chart.js',
-    compressed='chart.min.js'
+    resource='chart.umd.js',
+    compressed='chart.umd.min.js'
 ))
 
 luxon_resources = wr.ResourceGroup(
@@ -40,7 +40,10 @@ chartjsadapterluxon_resources = wr.ResourceGroup(
 )
 chartjsadapterluxon_resources.add(wr.ScriptResource(
     name='charjs-adapter-luxon-js',
-    depends='luxon-js',
+    depends=[
+        'chart-js',
+        'luxon-js'
+    ],
     resource='chartjs-adapter-luxon.js',
     compressed='chartjs-adapter-luxon.min.js'
 ))
