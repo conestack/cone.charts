@@ -20,6 +20,8 @@ class BarChartTile(ChartTile):
             }
         }
     }
+    """ Must have required options for barchart. See chart.js documentation.
+    """
 
     @staticmethod
     def chart_data(model, request):

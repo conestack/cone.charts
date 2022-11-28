@@ -6,6 +6,7 @@ export * from './chart.js';
 export * from './line.js';
 export * from './polar.js';
 export * from './bar.js';
+export * from './pie.js';
 /* 
     Export all chart types and initialize all charts with treibstoff or bdajax
 */
