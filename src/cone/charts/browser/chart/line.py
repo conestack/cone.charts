@@ -13,5 +13,7 @@ class LineChartTile(ChartTile):
 
     @staticmethod
     def chart_data(model, request):
+        """ Return chart data as dict.
+        """
         raise NotImplementedError('Chart data not implemented')
 

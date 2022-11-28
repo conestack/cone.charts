@@ -3,6 +3,9 @@ import $ from 'jquery';
 export class ChartTile extends ts.Events {
 
     static initialize(context) {
+        /* initializes a chart instance for each `div.cone-chart` element 
+            in context
+        */
         $('div.cone-chart', context).each(function() {
             let elem = $(this),
                 settings = elem.data('chart-settings'),
@@ -28,14 +31,21 @@ export class ChartTile extends ts.Events {
         // the chartjs Chart instance
         this.chart = null;
 
+        // binding event handlers
         this.on_data_load = this.on_data_load.bind(this);
 
+        // calling abstract methods for subclasses
         this.prepare_options();
         this.prepare_params();
+
+        // calling chart loader function
         this.load();
     }
 
     load() {
+        /* loads the corresponding chart data from the server and 
+            calls on_data_load when done
+         */
         this.unload();
         ts.ajax.request({
             url: this.data_source,
@@ -52,33 +62,48 @@ export class ChartTile extends ts.Events {
     }
 
     unload() {
+        /* destroys the chart 
+        */
         if (this.chart !== null) {
             this.chart.destroy();
         }
     }
 
     destroy() {
+        /* gets called when a ts.ajax instance is destroyed
+        */
         this.unload();
     }
 
     on_data_load() {
+        /*  called when data is loaded from server
+            can be overridden to prepare data before creating chart
+        */
         this.create_chart();
     }
 
     prepare_options() {
+        // can be overridden to prepare chart options
         // set defaults on options if necessary
     }
 
     prepare_params() {
-        // set chart configuration parameters sent to server when requesting
-        // chart data
+        /* abstract method
+            can be overridden to prepare params
+            set chart configuration parameters sent to server when requesting
+        */
     }
 
     prepare_data() {
-        // prepare data for chart
+        /* abstract method
+            can be overridden to prepare data before creating chart
+        */
     }
 
     create_chart() {
-        // abstract create chart
+        /* abstract method
+            must be overridden to create the chart
+        */
+        throw new Error('create_chart must be overridden');
     }
 }

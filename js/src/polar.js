@@ -7,8 +7,8 @@ export class PolarChartTile extends ChartTile {
     }
 
     create_chart() {
-        let options = this.options;
-        let chart_data = [];
+        /* creates the chartjs chart instance for a polar chart
+        */
         this.chart = new Chart(this.canvas, {
             type: 'polarArea',
             data: this.data,
