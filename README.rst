@@ -34,8 +34,14 @@ available :
   plugin. Defaults to `false`.
 
 
-Usage
------
+Chart Widget
+------------
+
+A chart widget tile is available in ``cone.charts``. It is a simple wrapper
+around the ``chartjs`` library and can be used in ``cone.app`` applications.
+By default it provides a ``line``, ``bar`` and ``polar`` chart, but can easily
+be extended with other chart types. 
+
 
 The following example shows how to use ``cone.charts`` in a ``cone.app``
 application.
@@ -81,7 +87,7 @@ application.
                     'datasets': datasets,
                 }
 
-In the template file:
+In the template (chart.pt) file:
 
 .. code:: XML
 

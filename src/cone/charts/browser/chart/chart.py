@@ -70,30 +70,76 @@ class ChartTile(Tile):
     """
 
     chart_factory = ''
+    """ Factory used for chart creation in javascript.
+
+    The defined factory must accept the chart related DOM element and the
+    chart settings as arguments and is responsible for creating the chart.
+    
+    It points to a class or function and gets searched by dot separated path
+    on window, e.g. 
+
+    'cone_charts.BarChartTile'
+
+    corresponds to
+
+    window.cone_charts:{
+        BarChartTile: ....
+    }
+
+    If JS chart factory needs to be customized, it can be done by
+    subclassing 'cone_chart.ChartTile':
+        my_namespace = {}
+        my_namespace.Chart = class extends cone_charts.ChartTile {
+            constructor(element, settings) {
+                super(element, settings);
+                // custom code
+            }
+            // custom code
+        }
+    """
 
     chart_id = 'cone-chart'
+    """ ID of chart DOM element."""
 
     chart_css = 'cone-chart'
+    """ CSS class of chart DOM element.
+
+    The default JS chart implementation searches for all `div` elements with
+    `cone-chart` class and initializes a chart instances for each of them.
+
+    If chart instance needs to be customized clientside this property must be
+    overwritten and the custom JS chart implementation must be adapted to
+    search for the custom CSS class.
+    """
 
     chart_options = None
     """
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {
-                position: 'top',
-            },
-            title: {
-                display: true,
-                text: 'Chart.js Line Chart'
+    Chart settings passed to the ChartJS constructor.
+    Reference: https://www.chartjs.org/docs/latest/general/options.html
+
+    e.g.
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                title: {
+                    display: true,
+                    text: 'Chart.js Line Chart'
+                }
             }
         }
-    }
+
     """
 
     chart_params = {}
     """Dict containing request parameters which gets sent to server when
-    querying chart data."""
+    querying chart data.
+
+    by default empty, can be overwritten by subclassing.
+    handy for passing additional parameters to chart data view.
+    """
 
     @property
     def chart_settings(self):
@@ -116,12 +162,12 @@ class ChartTile(Tile):
 
     @staticmethod
     def chart_data(model, request):
-        """Return data for chartjs.
+        """Return data configuration for chartjs.
 
         Please refer to official chartjs documentation for details.
         https://www.chartjs.org/docs/latest/
 
-        Example::
+        e.g.
             {
                 labels: labels,
                 datasets: [
@@ -145,6 +191,12 @@ class ChartTile(Tile):
         )
 
     def render(self):
+        """Renders a div element with chart settings as JSON data attribute.
+        and a canvas with get used by the chartjs library to render the chart.
+
+        When editing of the chart appearance is needed, this can be done by
+        editing the div element.
+        """
         return (
             u'<div class="{css}"'
             u'     id="{id}"'
