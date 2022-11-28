@@ -34,8 +34,63 @@ available :
   plugin. Defaults to `false`.
 
 
+Usage
+-----
+
+The following example shows how to use ``cone.charts`` in a ``cone.app``
+application.
+
+.. code-block:: python
+
+        
+        from cone.charts.browser.chart.line import LineChartTile
+        @chart_tile(
+            name='my_fancy_linechart',
+            interface=MyFancyModle,
+            permission='view')
+        class MyFancyLinechart(LineChartTile):
+
+            @staticmethod
+            def chart_data(model, request):
+
+                def random_data():
+                    data1 = []
+                    data2 = []
+                    for i in range(100):
+                        data1.append([str(i), random.randint(0, 100)])
+                    for i in range(50):
+                        data2.append([str(i), random.randint(0, 100)])
+                    return [data1, data2]
+                data = random_data()
+
+                # data layout = [[x1, y1], [x2, y2], ...] x = string, y = value
+                # converted: {labels: [x1, x2, ...], datasets: [{data: [y1, y2, ...]}]}
+                # we can have multiple datasets
+                datasets = []
+                for dataset in data:
+                    color = 'rgb({},{},{})'.format(
+                        *[random.randint(0, 255) for _ in range(3)])
+                    datasets.append({
+                        'data': [point[1] for point in dataset],
+                        'borderColor': color,
+                        'tension': 0.3,
+                        'label': 'Dataset {}'.format(len(datasets) + 1),
+                    })
+                return {
+                    'labels': [point[0] for point in data[0]],
+                    'datasets': datasets,
+                }
+
+In the template file:
+
+.. code:: XML
+
+        <tal:chart replace="structure tile('my_fancy_linechart')">
+
+
 Contributors
 ============
 
 - Robert Niederreiter
 - Torben Baumgartner
+
