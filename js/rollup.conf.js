@@ -1,7 +1,7 @@
 import cleanup from 'rollup-plugin-cleanup';
 import {terser} from 'rollup-plugin-terser';
 
-const out_dir = 'src/cone/charts/browser/static';
+const out_dir = 'src/cone/charts/browser/static/cone_charts';
 
 const outro = `
 window.cone_charts = exports;

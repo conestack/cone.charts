@@ -1,13 +1,17 @@
-(function (exports, $) {
+var cone_charts = (function (exports, $) {
     'use strict';
 
     class ChartTile extends ts.Events {
         static initialize(context) {
+            function test(factory_path) {
+                console.log('test', factory_path);
+                return ts.object_by_path(factory_path);
+            }
             $('div.cone-chart', context).each(function() {
                 let elem = $(this),
                     settings = elem.data('chart-settings'),
                     factory_path = settings.factory,
-                    factory = ts.object_by_path(factory_path),
+                    factory = test(factory_path),
                     inst = new factory(elem, settings);
                 ts.ajax.attach(inst, elem);
             });
@@ -60,6 +64,7 @@
         prepare_data() {
         }
         create_chart() {
+            throw new Error('create_chart must be overridden');
         }
     }
 
@@ -81,7 +86,6 @@
             super(elem, settings);
         }
         create_chart() {
-            this.options;
             this.chart = new Chart(this.canvas, {
                 type: 'polarArea',
                 data: this.data,
@@ -103,6 +107,20 @@
         }
     }
 
+    class PieChartTile extends ChartTile {
+        constructor(elem, settings) {
+            console.log("PieChartTile constructor");
+            super(elem, settings);
+        }
+        create_chart() {
+            this.chart = new Chart(this.canvas, {
+                type: 'pie',
+                data: this.data,
+                options: this.options
+            });
+        }
+    }
+
     $(function() {
         if (window.ts !== undefined) {
             ts.ajax.register(ChartTile.initialize, true);
@@ -114,6 +132,7 @@
     exports.BarChartTile = BarChartTile;
     exports.ChartTile = ChartTile;
     exports.LineChartTile = LineChartTile;
+    exports.PieChartTile = PieChartTile;
     exports.PolarChartTile = PolarChartTile;
 
     Object.defineProperty(exports, '__esModule', { value: true });
