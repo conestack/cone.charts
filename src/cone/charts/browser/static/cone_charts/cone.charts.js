@@ -3,12 +3,12 @@ var cone_charts = (function (exports, $) {
 
     class ChartTile extends ts.Events {
         static initialize(context) {
-            $('div.cone-chart', context).each(function() {
+            $('div.cone-chart', context).each(function () {
                 let elem = $(this),
                     settings = elem.data('chart-settings'),
                     factory_path = settings.factory,
                     factory = ts.object_by_path(factory_path);
-                    inst = new factory(elem, settings);
+                inst = new factory(elem, settings);
                 ts.ajax.attach(inst, elem);
             });
         }
@@ -116,7 +116,7 @@ var cone_charts = (function (exports, $) {
         }
     }
 
-    $(function() {
+    $(function () {
         if (window.ts !== undefined) {
             ts.ajax.register(ChartTile.initialize, true);
         } else {

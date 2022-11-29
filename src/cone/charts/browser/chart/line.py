@@ -17,4 +17,3 @@ class LineChartTile(ChartTile):
             See ChartTile.chart_data for details.
         """
         raise NotImplementedError('Chart data not implemented')
-

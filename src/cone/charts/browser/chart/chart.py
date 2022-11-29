@@ -50,6 +50,7 @@ class chart_tile(tile):
     def __call__(self, ob):
         self.venusian = venusian
         self.create_data_view(ob)
+
         def callback(context, name, ob_):
             register_tile(
                 name=self_.name,

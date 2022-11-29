@@ -11,7 +11,7 @@ class BarChartTile(ChartTile):
     """ Factory used for barchart creation in javascript.
     """
 
-    chart_options ={
+    chart_options = {
         'options': {
             'scales': {
                 'y': {
