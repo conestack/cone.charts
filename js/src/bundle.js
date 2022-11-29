@@ -10,7 +10,7 @@ export * from './pie.js';
 /* 
     Export all chart types and initialize all charts with treibstoff or bdajax
 */
-$(function() {
+$(function () {
     if (window.ts !== undefined) {
         ts.ajax.register(ChartTile.initialize, true);
     } else {

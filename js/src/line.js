@@ -1,4 +1,4 @@
-import {ChartTile} from './chart.js';
+import { ChartTile } from './chart.js';
 
 export class LineChartTile extends ChartTile {
 
