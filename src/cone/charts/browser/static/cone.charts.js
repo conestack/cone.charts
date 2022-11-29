@@ -1,13 +1,17 @@
-(function (exports, $) {
+var cone_charts = (function (exports, $) {
     'use strict';
 
     class ChartTile extends ts.Events {
         static initialize(context) {
+            function test(factory_path) {
+                console.log('test', factory_path);
+                return ts.object_by_path(factory_path);
+            }
             $('div.cone-chart', context).each(function() {
                 let elem = $(this),
                     settings = elem.data('chart-settings'),
                     factory_path = settings.factory,
-                    factory = ts.object_by_path(factory_path),
+                    factory = test(factory_path),
                     inst = new factory(elem, settings);
                 ts.ajax.attach(inst, elem);
             });
@@ -105,11 +109,12 @@
 
     class PieChartTile extends ChartTile {
         constructor(elem, settings) {
+            console.log("PieChartTile constructor");
             super(elem, settings);
         }
         create_chart() {
             this.chart = new Chart(this.canvas, {
-                type: "pie",
+                type: 'pie',
                 data: this.data,
                 options: this.options
             });

@@ -14,6 +14,7 @@ export default args => {
             cleanup()
         ],
         output: [{
+            name: 'cone_charts',
             file: `${out_dir}/cone.charts.js`,
             format: 'iife',
             outro: outro,
@@ -29,6 +30,7 @@ export default args => {
     };
     if (args.configDebug !== true) {
         conf.output.push({
+            name: 'cone_charts',
             file: `${out_dir}/cone.charts.min.js`,
             format: 'iife',
             plugins: [

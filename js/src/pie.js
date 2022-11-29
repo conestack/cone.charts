@@ -1,8 +1,9 @@
-import { ChartTile } from "./chart";
+import {ChartTile} from './chart.js';
 
 export class PieChartTile extends ChartTile {
 
     constructor(elem, settings) {
+        console.log("PieChartTile constructor");
         super(elem, settings);
     }
 
@@ -10,7 +11,7 @@ export class PieChartTile extends ChartTile {
         /* creates the chartjs chart instance for a pie chart
         */
         this.chart = new Chart(this.canvas, {
-            type: "pie",
+            type: 'pie',
             data: this.data,
             options: this.options
         });
