@@ -11,9 +11,6 @@ from cone.charts import testing
 class TestBrowserCharts(NodeTestCase):
     layer = testing.conechart_layer
 
-    def test_charts(self):
-        pass
-
     def test_line_chart(self):
         request = self.layer.new_request()
         chart_tile = LineChartTile()
@@ -26,7 +23,6 @@ class TestBrowserCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
-
 
     def test_pie_chart(self):
         request = self.layer.new_request()
@@ -61,7 +57,7 @@ class TestBrowserCharts(NodeTestCase):
         })
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
-    
+
     def test_polar_chart(self):
         request = self.layer.new_request()
         chart_tile = PolarChartTile()
@@ -70,8 +66,8 @@ class TestBrowserCharts(NodeTestCase):
 
         self.assertEqual(chart_tile.chart_id, 'cone-chart')
         self.assertEqual(chart_tile.chart_css, 'cone-chart')
-        self.assertEqual(chart_tile.chart_factory, 'cone_charts.PolarChartTile')
+        self.assertEqual(chart_tile.chart_factory,
+                         'cone_charts.PolarChartTile')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
-    
