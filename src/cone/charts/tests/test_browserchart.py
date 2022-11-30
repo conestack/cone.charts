@@ -1,6 +1,6 @@
 from node.tests import NodeTestCase
 from cone.app.model import BaseNode
-from cone.charts.browser.chart.chart import ChartTile
+from cone.charts.browser.chart.chart import chart_tile
 from cone.charts.browser.chart.line import LineChartTile
 from cone.charts.browser.chart.pie import PieChartTile
 from cone.charts.browser.chart.bar import BarChartTile
@@ -23,6 +23,8 @@ class TestBrowserCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
+        with self.assertRaises(NotImplementedError):
+            chart_tile.chart_data(chart_tile.model,chart_tile.request)
 
     def test_pie_chart(self):
         request = self.layer.new_request()
@@ -36,6 +38,8 @@ class TestBrowserCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
+        with self.assertRaises(NotImplementedError):
+            chart_tile.chart_data(chart_tile.model,chart_tile.request)
 
     def test_bar_chart(self):
         request = self.layer.new_request()
@@ -57,6 +61,8 @@ class TestBrowserCharts(NodeTestCase):
         })
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
+        with self.assertRaises(NotImplementedError):
+            chart_tile.chart_data(chart_tile.model,chart_tile.request)
 
     def test_polar_chart(self):
         request = self.layer.new_request()
@@ -71,3 +77,23 @@ class TestBrowserCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
+        with self.assertRaises(NotImplementedError):
+            chart_tile.chart_data(chart_tile.model,chart_tile.request)
+
+    def test_chart_tile_decorator(self):
+
+        @chart_tile(
+            name='test',
+            interface=BaseNode,
+            permission='view',
+        )
+        class TestChartTile(LineChartTile):
+            ...
+
+        request = self.layer.new_request()
+        obj = LineChartTile()
+        obj.request = request
+        obj.model = BaseNode()
+        obj = chart_tile()(obj)
+        view, view_name, arg1, arg2 = obj.__venusian_callbacks__['pyramid'][0]
+        self.assertEqual(view_name, 'cone.charts.tests.test_browserchart')
