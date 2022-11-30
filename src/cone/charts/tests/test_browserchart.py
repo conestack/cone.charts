@@ -12,8 +12,7 @@ class TestBrowserCharts(NodeTestCase):
     layer = testing.chart_layer
 
     def test_line_chart(self):
-        """Testing the line chart tile and the pre-configurations
-        """
+        """Testing the line chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = LineChartTile()
         chart_tile.request = request
@@ -30,8 +29,7 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_pie_chart(self):
-        """Testing the pie chart tile and the pre-configurations
-        """
+        """Testing the pie chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = PieChartTile()
         chart_tile.request = request
@@ -48,8 +46,7 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_bar_chart(self):
-        """Testing the bar chart tile and the pre-configurations
-        """
+        """Testing the bar chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = BarChartTile()
         chart_tile.request = request
@@ -74,8 +71,7 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_polar_chart(self):
-        """Testing the polar chart tile and the pre-configurations
-        """
+        """Testing the polar chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = PolarChartTile()
         chart_tile.request = request
