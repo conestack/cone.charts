@@ -23,7 +23,8 @@ export class ChartTile extends ts.Events {
      * Create a Chart object.
      *
      * @param {$}  jQuery wrapped chart container element.
-     * @param {Object} XXX
+     * @param {Object} settings chart setting object for type, options, 
+     * data_source and params
      */
     constructor(elem, settings) {
         super();
@@ -52,10 +53,11 @@ export class ChartTile extends ts.Events {
         this.load();
     }
 
+    /**
+     * Loads the chart data from the server.
+     * calls ``on_data_load`` when data is loaded
+    */
     load() {
-        /* loads the corresponding chart data from the server and 
-            calls on_data_load when done
-         */
         this.unload();
         ts.ajax.request({
             url: this.data_source,
@@ -71,43 +73,51 @@ export class ChartTile extends ts.Events {
         });
     }
 
+    /**
+     * Unloads the chart.
+     */
     unload() {
-        /* destroys the chart 
-        */
         if (this.chart !== null) {
             this.chart.destroy();
         }
     }
 
+    /**
+     * Eventhandler get called when ts.ajax instanced is destroyed.
+     */
     destroy() {
-        /* gets called when a ts.ajax instance is destroyed
-        */
         this.unload();
     }
 
+
+    /**
+     * Eventhandler get called when chart data is loaded.
+     * can be overridden to prepare data before creating chart
+     * calls ``create_chart`` to create the chart
+     */
     on_data_load() {
-        /*  called when data is loaded from server
-            can be overridden to prepare data before creating chart
-        */
         this.create_chart();
     }
 
+    /**
+     * abstract method
+     * can be overridden to prepare options
+     */
     prepare_options() {
-        // can be overridden to prepare chart options
-        // set defaults on options if necessary
     }
 
+    /**
+     * abstract method
+     * can be overridden to prepare params
+     */
     prepare_params() {
-        /* abstract method
-            can be overridden to prepare params
-            set chart configuration parameters sent to server when requesting
-        */
     }
 
+    /**
+     * abstract method
+     * can be overridden to prepare data
+     */
     prepare_data() {
-        /* abstract method
-            can be overridden to prepare data before creating chart
-        */
     }
 
     /**

@@ -69,7 +69,7 @@ class chart_tile(tile):
 class ChartTile(Tile):
     """Tile rendering a chart."""
 
-    chart_factory = ''
+    chart_factory = 'cone_charts.ChartTile'
     """Factory used for chart creation in javascript.
 
     The defined factory must accept the chart related DOM element and the
@@ -78,12 +78,12 @@ class ChartTile(Tile):
     It points to a class or function and gets searched by dot separated path
     on window, e.g. 
 
-    'cone_charts.BarChartTile'
+    'cone_charts.ChartTile'
 
     corresponds to
 
     window.cone_charts:{
-        BarChartTile: ....
+        ChartTile: ....
     }
 
     If JS chart factory needs to be customized, it can be done by
@@ -99,7 +99,10 @@ class ChartTile(Tile):
     """
 
     chart_type = None
-    """"""
+    """ Type of the chart
+    e.g 'bar', 'line', 'pie', 'polarArea'
+    for more information see: http://www.chartjs.org/docs/
+    """
 
     chart_id = 'cone-chart'
     """ ID of chart DOM element."""
@@ -129,7 +132,7 @@ class ChartTile(Tile):
                 },
                 title: {
                     display: true,
-                    text: 'Chart.js Line Chart'
+                    text: 'My Chart'
                 }
             }
         }
@@ -178,14 +181,14 @@ class ChartTile(Tile):
                     {
                         label: 'Dataset 1',
                         data: [10, 20, 30],
-                        borderColor: Utils.CHART_COLORS.red,
-                        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.red, 0.5),
+                        borderColor: rgb(255, 99, 132),
+                        backgroundColor: rgba(255, 99, 132, 0.2),
                     },
                     {
                         label: 'Dataset 2',
                         data: [20, 10, 40],
-                        borderColor: Utils.CHART_COLORS.blue,
-                        backgroundColor: Utils.transparentize(Utils.CHART_COLORS.blue, 0.5),
+                        borderColor: rgb(54, 162, 235),
+                        backgroundColor: rgba(54, 162, 235, 0.2),
                     }
                 ]
             }

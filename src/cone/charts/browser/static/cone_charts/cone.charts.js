@@ -17,6 +17,7 @@ var cone_charts = (function (exports, $) {
             this.elem = elem;
             this.canvas = $('canvas', elem);
             this.id = elem.attr('id');
+            this.type = settings.type;
             this.options = settings.options;
             this.data_source = settings.data_source;
             this.params = settings.params;
@@ -60,56 +61,8 @@ var cone_charts = (function (exports, $) {
         prepare_data() {
         }
         create_chart() {
-            throw new Error('create_chart must be overridden');
-        }
-    }
-
-    class LineChartTile extends ChartTile {
-        constructor(elem, settings) {
-            super(elem, settings);
-        }
-        create_chart() {
             this.chart = new Chart(this.canvas, {
-                type: 'line',
-                data: this.data,
-                options: this.options
-            });
-        }
-    }
-
-    class PolarChartTile extends ChartTile {
-        constructor(elem, settings) {
-            super(elem, settings);
-        }
-        create_chart() {
-            this.chart = new Chart(this.canvas, {
-                type: 'polarArea',
-                data: this.data,
-                options: this.options
-            });
-        }
-    }
-
-    class BarChartTile extends ChartTile {
-        constructor(elem, settings) {
-            super(elem, settings);
-        }
-        create_chart() {
-            this.chart = new Chart(this.canvas, {
-                type: 'bar',
-                data: this.data,
-                options: this.options
-            });
-        }
-    }
-
-    class PieChartTile extends ChartTile {
-        constructor(elem, settings) {
-            super(elem, settings);
-        }
-        create_chart() {
-            this.chart = new Chart(this.canvas, {
-                type: 'pie',
+                type: this.type,
                 data: this.data,
                 options: this.options
             });
@@ -124,17 +77,9 @@ var cone_charts = (function (exports, $) {
         }
     });
 
-    exports.BarChartTile = BarChartTile;
     exports.ChartTile = ChartTile;
-    exports.LineChartTile = LineChartTile;
-    exports.PieChartTile = PieChartTile;
-    exports.PolarChartTile = PolarChartTile;
 
     Object.defineProperty(exports, '__esModule', { value: true });
-
-
-    window.cone_charts = exports;
-
 
     return exports;
 
