@@ -9,7 +9,7 @@ from node.tests import NodeTestCase
 
 
 class TestBrowserCharts(NodeTestCase):
-    layer = testing.conechart_layer
+    layer = testing.chart_layer
 
     def test_line_chart(self):
         """Testing the line chart tile and the pre-configurations
@@ -21,12 +21,13 @@ class TestBrowserCharts(NodeTestCase):
 
         self.assertEqual(chart_tile.chart_id, 'cone-chart')
         self.assertEqual(chart_tile.chart_css, 'cone-chart')
-        self.assertEqual(chart_tile.chart_factory, 'cone_charts.LineChartTile')
+        self.assertEqual(chart_tile.chart_factory, 'cone_charts.ChartTile')
+        self.assertEqual(chart_tile.chart_type, 'line')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
         with self.assertRaises(NotImplementedError):
-            chart_tile.chart_data(chart_tile.model,chart_tile.request)
+            chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_pie_chart(self):
         """Testing the pie chart tile and the pre-configurations
@@ -38,12 +39,13 @@ class TestBrowserCharts(NodeTestCase):
 
         self.assertEqual(chart_tile.chart_id, 'cone-chart')
         self.assertEqual(chart_tile.chart_css, 'cone-chart')
-        self.assertEqual(chart_tile.chart_factory, 'cone_charts.PieChartTile')
+        self.assertEqual(chart_tile.chart_factory, 'cone_charts.ChartTile')
+        self.assertEqual(chart_tile.chart_type, 'pie')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
         with self.assertRaises(NotImplementedError):
-            chart_tile.chart_data(chart_tile.model,chart_tile.request)
+            chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_bar_chart(self):
         """Testing the bar chart tile and the pre-configurations
@@ -55,7 +57,8 @@ class TestBrowserCharts(NodeTestCase):
 
         self.assertEqual(chart_tile.chart_id, 'cone-chart')
         self.assertEqual(chart_tile.chart_css, 'cone-chart')
-        self.assertEqual(chart_tile.chart_factory, 'cone_charts.BarChartTile')
+        self.assertEqual(chart_tile.chart_factory, 'cone_charts.ChartTile')
+        self.assertEqual(chart_tile.chart_type, 'bar')
         self.assertEqual(chart_tile.chart_options, {
             'options': {
                 'scales': {
@@ -68,7 +71,7 @@ class TestBrowserCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
         with self.assertRaises(NotImplementedError):
-            chart_tile.chart_data(chart_tile.model,chart_tile.request)
+            chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_polar_chart(self):
         """Testing the polar chart tile and the pre-configurations
@@ -80,13 +83,13 @@ class TestBrowserCharts(NodeTestCase):
 
         self.assertEqual(chart_tile.chart_id, 'cone-chart')
         self.assertEqual(chart_tile.chart_css, 'cone-chart')
-        self.assertEqual(chart_tile.chart_factory,
-                         'cone_charts.PolarChartTile')
+        self.assertEqual(chart_tile.chart_factory, 'cone_charts.ChartTile')
+        self.assertEqual(chart_tile.chart_type, 'polarArea')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
         chart_tile.render()
         with self.assertRaises(NotImplementedError):
-            chart_tile.chart_data(chart_tile.model,chart_tile.request)
+            chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_chart_tile_decorator(self):
         """ Testing the chart tile decorator
