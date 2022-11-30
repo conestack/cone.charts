@@ -2,10 +2,13 @@ import $ from 'jquery';
 
 export class ChartTile extends ts.Events {
 
+    /**
+     * Initializes a chart instance for each div DOM element with
+     * ``cone-chart`` CSS class set
+     *
+     * @param {$} jQuery wrapped context
+     */
     static initialize(context) {
-        /* initializes a chart instance for each `div.cone-chart` element 
-            in context
-        */
         $('div.cone-chart', context).each(function () {
             let elem = $(this),
                 settings = elem.data('chart-settings'),
@@ -16,12 +19,19 @@ export class ChartTile extends ts.Events {
         });
     }
 
+    /**
+     * Create a Chart object.
+     *
+     * @param {$}  jQuery wrapped chart container element.
+     * @param {Object} XXX
+     */
     constructor(elem, settings) {
         super();
         this.elem = elem;
         this.canvas = $('canvas', elem);
         this.id = elem.attr('id');
 
+        this.type = settings.type;
         this.options = settings.options;
         this.data_source = settings.data_source;
         this.params = settings.params;
@@ -100,10 +110,14 @@ export class ChartTile extends ts.Events {
         */
     }
 
+    /**
+     * Creates the actual chart.
+     */
     create_chart() {
-        /* abstract method
-            must be overridden to create the chart
-        */
-        throw new Error('create_chart must be overridden');
+        this.chart = new Chart(this.canvas, {
+            type: this.type,
+            data: this.data,
+            options: this.options
+        });
     }
 }

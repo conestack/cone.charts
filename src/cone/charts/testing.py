@@ -1,19 +1,16 @@
-from cone.sql.testing import SQLLayer
+from cone.app.testing import Security
 
 
-class ConeChartTestingLayer(SQLLayer):
-
-    def tearDown(self):
-        super().tearDown()
+class ChartLayer(Security):
 
     def make_app(self):
         plugins = [
             'cone.sql',
-            'cone.ugm',
-            ]
+            'cone.ugm'
+        ]
         kw = dict()
         kw['cone.plugins'] = '\n'.join(plugins)
         super().make_app(**kw)
 
 
-conechart_layer = ConeChartTestingLayer()
+chart_layer = ChartLayer()

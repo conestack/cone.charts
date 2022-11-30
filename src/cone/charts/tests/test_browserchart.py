@@ -1,11 +1,11 @@
-from node.tests import NodeTestCase
 from cone.app.model import BaseNode
+from cone.charts import testing
+from cone.charts.browser.chart.bar import BarChartTile
 from cone.charts.browser.chart.chart import chart_tile
 from cone.charts.browser.chart.line import LineChartTile
 from cone.charts.browser.chart.pie import PieChartTile
-from cone.charts.browser.chart.bar import BarChartTile
 from cone.charts.browser.chart.polar import PolarChartTile
-from cone.charts import testing
+from node.tests import NodeTestCase
 
 
 class TestBrowserCharts(NodeTestCase):

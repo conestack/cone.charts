@@ -1,7 +1,7 @@
 from cone.app.browser.resources import resources
 from cone.app.browser.resources import set_resource_include
-import webresource as wr
 import os
+import webresource as wr
 
 
 resources_dir = os.path.join(os.path.dirname(__file__), 'static')
@@ -66,7 +66,7 @@ def configure_resources(settings):
 
     set_resource_include(settings, 'chart-js', 'authenticated')
     set_resource_include(settings, 'cone_charts-js', 'authenticated')
+
     include =  False if included('cone.charts.luxon') else 'authenticated'
     set_resource_include(settings, 'luxon-js', include)
     set_resource_include(settings, 'charjs-adapter-luxon-js', include)
-    

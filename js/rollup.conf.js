@@ -3,10 +3,6 @@ import {terser} from 'rollup-plugin-terser';
 
 const out_dir = 'src/cone/charts/browser/static/cone_charts';
 
-const outro = `
-window.cone_charts = exports;
-`;
-
 export default args => {
     let conf = {
         input: 'js/src/bundle.js',
@@ -17,7 +13,6 @@ export default args => {
             name: 'cone_charts',
             file: `${out_dir}/cone.charts.js`,
             format: 'iife',
-            outro: outro,
             globals: {
                 jquery: 'jQuery'
             },
@@ -36,7 +31,6 @@ export default args => {
             plugins: [
                 terser()
             ],
-            outro: outro,
             globals: {
                 jquery: 'jQuery'
             },

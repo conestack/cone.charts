@@ -67,15 +67,14 @@ class chart_tile(tile):
 
 
 class ChartTile(Tile):
-    """Tile rendering a chart.
-    """
+    """Tile rendering a chart."""
 
     chart_factory = ''
-    """ Factory used for chart creation in javascript.
+    """Factory used for chart creation in javascript.
 
     The defined factory must accept the chart related DOM element and the
     chart settings as arguments and is responsible for creating the chart.
-    
+
     It points to a class or function and gets searched by dot separated path
     on window, e.g. 
 
@@ -98,6 +97,9 @@ class ChartTile(Tile):
             // custom code
         }
     """
+
+    chart_type = None
+    """"""
 
     chart_id = 'cone-chart'
     """ ID of chart DOM element."""
@@ -152,6 +154,7 @@ class ChartTile(Tile):
         """
         return dict(
             factory=self.chart_factory,
+            type=self.chart_type,
             options=self.chart_options,
             params=self.chart_params,
             data_source=make_url(

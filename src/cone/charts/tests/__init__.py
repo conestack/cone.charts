@@ -2,7 +2,6 @@ import sys
 import unittest
 
 def test_suite():
-
     from cone.charts.tests import test_browserchart
 
     suite = unittest.TestSuite()

@@ -21,7 +21,9 @@ cone.app.
 * For building time and date based charts,
   `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3) is included.
 
-* Adapter for Luxon for Chart-js `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_ (v1.2.1).
+* Adapter for Luxon for Chart-js
+  `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_
+  (v1.2.1).
 
 
 Resources
@@ -37,61 +39,35 @@ available :
 Chart Widget
 ------------
 
-A chart widget tile is available in ``cone.charts``. It is a simple wrapper
-around the ``chartjs`` library and can be used in ``cone.app`` applications.
-By default it provides a ``line``, ``bar``, ``pie`` and ``polar`` chart, but can easily
-be extended with other chart types. 
+A chart widget tile is available in ``cone.charts``. It is a wrapper around
+the ``chartjs`` library and can be used in ``cone.app`` applications.
+By default it provides a ``line``, ``bar``, ``pie`` and ``polar`` chart, but
+can be extended with other chart types.
 
-
-The following example shows how to use ``cone.charts`` in a ``cone.app``
-application.
+The following example shows how to use linechart.
 
 .. code-block:: python
 
-        
-        from cone.charts.browser.chart.line import LineChartTile
-        @chart_tile(
-            name='my_fancy_linechart',
-            interface=MyFancyModle,
-            permission='view')
-        class MyFancyLinechart(LineChartTile):
+    from cone.charts.browser.chart import chart_tile
+    from cone.charts.browser.chart import LineChartTile
 
-            @staticmethod
-            def chart_data(model, request):
+    @chart_tile(
+        name='my_linechart',
+        interface=MyModel,
+        permission='view')
+    class MyLineChart(LineChartTile):
 
-                def random_data():
-                    data1 = []
-                    data2 = []
-                    for i in range(100):
-                        data1.append([str(i), random.randint(0, 100)])
-                    for i in range(50):
-                        data2.append([str(i), random.randint(0, 100)])
-                    return [data1, data2]
-                data = random_data()
-
-                # data layout = [[x1, y1], [x2, y2], ...] x = string, y = value
-                # converted: {labels: [x1, x2, ...], datasets: [{data: [y1, y2, ...]}]}
-                # we can have multiple datasets
-                datasets = []
-                for dataset in data:
-                    color = 'rgb({},{},{})'.format(
-                        *[random.randint(0, 255) for _ in range(3)])
-                    datasets.append({
-                        'data': [point[1] for point in dataset],
-                        'borderColor': color,
-                        'tension': 0.3,
-                        'label': 'Dataset {}'.format(len(datasets) + 1),
-                    })
-                return {
-                    'labels': [point[0] for point in data[0]],
-                    'datasets': datasets,
-                }
-
-In the template (chart.pt) file:
-
-.. code:: XML
-
-        <tal:chart replace="structure tile('my_fancy_linechart')">
+        @staticmethod
+        def chart_data(model, request):
+            return {
+                'labels': ['Label 1', 'Label 2'],
+                'datasets': [{
+                    'data': [10, 20],
+                    'borderColor': 'rgb(255,0,0)',
+                    'tension': 0.3,
+                    'label': 'Dataset Label',
+                }],
+            }
 
 
 Contributors
