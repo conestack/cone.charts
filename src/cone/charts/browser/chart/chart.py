@@ -173,25 +173,6 @@ class ChartTile(Tile):
 
         Please refer to official chartjs documentation for details.
         https://www.chartjs.org/docs/latest/
-
-        e.g.
-            {
-                labels: labels,
-                datasets: [
-                    {
-                        label: 'Dataset 1',
-                        data: [10, 20, 30],
-                        borderColor: rgb(255, 99, 132),
-                        backgroundColor: rgba(255, 99, 132, 0.2),
-                    },
-                    {
-                        label: 'Dataset 2',
-                        data: [20, 10, 40],
-                        borderColor: rgb(54, 162, 235),
-                        backgroundColor: rgba(54, 162, 235, 0.2),
-                    }
-                ]
-            }
         """
         raise NotImplementedError(
             'Abstract ``ChartDataProvider``does implement ``data``.'
@@ -199,7 +180,7 @@ class ChartTile(Tile):
 
     def render(self):
         """Renders a div element with chart settings as JSON data attribute.
-        and a canvas with get used by the chartjs library to render the chart.
+        and a canvas which get used by the chartjs library to render the chart.
 
         When editing of the chart appearance is needed, this can be done by
         editing the div element.
