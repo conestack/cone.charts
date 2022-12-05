@@ -2,7 +2,7 @@ from .chart import ChartTile
 
 
 class LineChartTile(ChartTile):
-    """ Tile rendering a line chart.
+    """Tile rendering a line chart.
     Reference: https://www.chartjs.org/docs/latest/charts/line.html
     """
 

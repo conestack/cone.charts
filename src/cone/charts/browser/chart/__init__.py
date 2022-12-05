@@ -1,10 +1,10 @@
+from .bar import BarChartTile  # noqa
+from .bubble import BubbleChartTile  # noqa
 from .chart import chart_tile  # noqa
 from .chart import ChartTile  # noqa
-from .bar import BarChartTile  # noqa
+from .doughnut import DoughnutChartTile  # noqa
 from .line import LineChartTile  # noqa
 from .pie import PieChartTile  # noqa
 from .polar import PolarChartTile  # noqa
 from .radar import RadarChartTile  # noqa
 from .scatter import ScatterChartTile  # noqa
-from .bubble import BubbleChartTile  # noqa
-from .doughnut import DoughnutChartTile  # noqa

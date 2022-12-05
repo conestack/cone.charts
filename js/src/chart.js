@@ -83,7 +83,7 @@ export class ChartTile extends ts.Events {
     }
 
     /**
-     * Eventhandler get called when ts.ajax instanced is destroyed.
+     * Event handler gets called when ts.ajax instance is destroyed.
      */
     destroy() {
         this.unload();
@@ -91,7 +91,7 @@ export class ChartTile extends ts.Events {
 
 
     /**
-     * Eventhandler get called when chart data is loaded.
+     * Event handler gets called when chart data is loaded.
      * can be overridden to prepare data before creating chart
      * calls ``create_chart`` to create the chart
      */

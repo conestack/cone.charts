@@ -2,7 +2,7 @@ from .chart import ChartTile
 
 
 class DoughnutChartTile(ChartTile):
-    """ Tile rendering a doughnut chart.
+    """Tile rendering a doughnut chart.
     Reference: https://www.chartjs.org/docs/latest/charts/doughnut.html
     """
 

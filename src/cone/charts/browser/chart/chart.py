@@ -1,6 +1,6 @@
 from cone.app.browser.utils import make_url
-from cone.tile import Tile
 from cone.tile import register_tile
+from cone.tile import Tile
 from cone.tile import tile
 import json
 import sys
@@ -111,7 +111,7 @@ class ChartTile(Tile):
     """ CSS class of chart DOM element.
 
     The default JS chart implementation searches for all `div` elements with
-    `cone-chart` class and initializes a chart instances for each of them.
+    `cone-chart` class and initializes a chart instance for each of them.
 
     If chart instance needs to be customized clientside this property must be
     overwritten and the custom JS chart implementation must be adapted to
@@ -179,7 +179,7 @@ class ChartTile(Tile):
         )
 
     def render(self):
-        """Renders a div element with chart settings as JSON data attribute.
+        """Renders a div element with chart settings as JSON data attribute
         and a canvas which get used by the chartjs library to render the chart.
 
         When editing of the chart appearance is needed, this can be done by
