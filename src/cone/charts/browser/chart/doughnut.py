@@ -7,7 +7,7 @@ class DoughnutChartTile(ChartTile):
     """
 
     chart_type = 'doughnut'
-    """Setting chart type to 'line'. """
+    """Setting chart type to 'doughnut'. """
 
     @staticmethod
     def chart_data(model, request):

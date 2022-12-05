@@ -7,7 +7,7 @@ class BubbleChartTile(ChartTile):
     """
 
     chart_type = 'bubble'
-    """Setting chart type to 'line'. """
+    """Setting chart type to 'bubble'. """
 
     @staticmethod
     def chart_data(model, request):

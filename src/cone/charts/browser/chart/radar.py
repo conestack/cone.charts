@@ -7,7 +7,7 @@ class RadarChartTile(ChartTile):
     """
 
     chart_type = 'radar'
-    """Setting chart type to 'line'. """
+    """Setting chart type to 'radar'. """
 
     @staticmethod
     def chart_data(model, request):

@@ -7,7 +7,7 @@ class ScatterChartTile(ChartTile):
     """
 
     chart_type = 'scatter'
-    """Setting chart type to 'line'. """
+    """Setting chart type to 'scatter'. """
 
     @staticmethod
     def chart_data(model, request):
