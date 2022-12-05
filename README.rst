@@ -41,8 +41,11 @@ Chart Widget
 
 A chart widget tile is available in ``cone.charts``. It is a wrapper around
 the ``chartjs`` library and can be used in ``cone.app`` applications.
-By default it provides a ``line``, ``bar``, ``pie`` and ``polar`` chart, but
+By default it provides a ``line``, ``bar``, ``pie``, ``scatter``, ``doughnut``, 
+``radar``, ``bubble`` and ``polar`` chart, but
 can be extended with other chart types.
+
+Mixed chart types are not supported, but can be extended.
 
 The following example shows how to use linechart.
 
