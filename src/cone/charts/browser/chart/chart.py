@@ -99,16 +99,16 @@ class ChartTile(Tile):
     """
 
     chart_type = None
-    """ Type of the chart
+    """Type of the chart
     e.g 'bar', 'line', 'pie', 'polarArea'
     for more information see: http://www.chartjs.org/docs/
     """
 
     chart_id = 'cone-chart'
-    """ ID of chart DOM element."""
+    """ID of chart DOM element."""
 
     chart_css = 'cone-chart'
-    """ CSS class of chart DOM element.
+    """CSS class of chart DOM element.
 
     The default JS chart implementation searches for all `div` elements with
     `cone-chart` class and initializes a chart instance for each of them.
@@ -121,18 +121,18 @@ class ChartTile(Tile):
     chart_options = None
     """
     Chart settings passed to the ChartJS constructor.
-    Reference: https://www.chartjs.org/docs/latest/general/options.html
+    Reference: https://www.chartjs.org/docs/4.0.1/general/options.html
 
     e.g.
-        options: {
-            responsive: true,
-            plugins: {
-                legend: {
-                    position: 'top',
+        'options': {
+            'responsive': True,
+            'plugins': {
+                'legend': {
+                    'position': 'top',
                 },
-                title: {
-                    display: true,
-                    text: 'My Chart'
+                'title': {
+                    'display': True,
+                    'text': 'My Chart'
                 }
             }
         }
@@ -169,11 +169,7 @@ class ChartTile(Tile):
 
     @staticmethod
     def chart_data(model, request):
-        """Return data configuration for chartjs.
-
-        Please refer to official chartjs documentation for details.
-        https://www.chartjs.org/docs/latest/
-        """
+        """Return data configuration for chartjs."""
         raise NotImplementedError(
             'Abstract ``ChartDataProvider``does implement ``data``.'
         )

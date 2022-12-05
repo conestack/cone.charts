@@ -2,9 +2,7 @@ from .chart import ChartTile
 
 
 class DoughnutChartTile(ChartTile):
-    """Tile rendering a doughnut chart.
-    Reference: https://www.chartjs.org/docs/latest/charts/doughnut.html
-    """
+    """Tile rendering a doughnut chart."""
 
     chart_type = 'doughnut'
     """Setting chart type to 'doughnut'. """
@@ -12,7 +10,8 @@ class DoughnutChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
-        See ChartTile.chart_data for details.
+        Refer to chart.js documentation for more information.
+        https://www.chartjs.org/docs/4.0.1/charts/doughnut.html
         Example:
             return {
                 labels: [

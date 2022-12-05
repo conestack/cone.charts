@@ -2,9 +2,7 @@ from .chart import ChartTile
 
 
 class ScatterChartTile(ChartTile):
-    """ Tile rendering a scatter chart.
-    Reference: https://www.chartjs.org/docs/latest/charts/scatter.html
-    """
+    """ Tile rendering a scatter chart."""
 
     chart_type = 'scatter'
     """Setting chart type to 'scatter'. """
@@ -12,7 +10,8 @@ class ScatterChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
-        See ChartTile.chart_data for details.
+        Refer to chart.js documentation for more information.
+        https://www.chartjs.org/docs/4.0.1/charts/scatter.html
         Example:
             return {
                 datasets: [{

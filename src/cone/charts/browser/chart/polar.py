@@ -2,9 +2,7 @@ from .chart import ChartTile
 
 
 class PolarChartTile(ChartTile):
-    """Polarchart options documentation:
-    https://www.chartjs.org/docs/latest/charts/polar.html
-    """
+    """Polarchart tile."""
 
     chart_type = 'polarArea'
     """ Setting chart type to 'polarArea'."""
@@ -12,7 +10,8 @@ class PolarChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
-        See ChartTile.chart_data for details.
+        Refer to chart.js documentation for more information.
+        https://www.chartjs.org/docs/4.0.1/charts/polar.html
         Example:
             return {
                 labels: labels,

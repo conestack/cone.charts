@@ -2,9 +2,7 @@ from .chart import ChartTile
 
 
 class RadarChartTile(ChartTile):
-    """ Tile rendering a radar chart.
-    Reference: https://www.chartjs.org/docs/latest/charts/radar.html
-    """
+    """ Tile rendering a radar chart."""
 
     chart_type = 'radar'
     """Setting chart type to 'radar'. """
@@ -12,7 +10,8 @@ class RadarChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
-        See ChartTile.chart_data for details.
+        Refer to chart.js documentation for more information.
+        https://www.chartjs.org/docs/4.0.1/charts/radar.html
         Example:
             return {
                 labels: [
