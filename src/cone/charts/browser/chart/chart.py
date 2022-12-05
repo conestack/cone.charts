@@ -143,13 +143,13 @@ class ChartTile(Tile):
     """Dict containing request parameters which gets sent to server when
     querying chart data.
 
-    by default empty, can be overwritten by subclassing.
-    handy for passing additional parameters to chart data view.
+    By default empty, can be overwritten by subclassing.
+    Handy for passing additional parameters to chart data view.
     """
 
     @property
     def chart_settings(self):
-        """Dictionary containing chart settings. This settings get passed to
+        """Dictionary containing chart settings. These settings get passed to
         the JS chart constructor.
 
         This property can be customized to pass additional settings to

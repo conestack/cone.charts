@@ -34,12 +34,12 @@ luxon_resources.add(wr.ScriptResource(
 
 chartjsadapterluxon_resources = wr.ResourceGroup(
     name='cone.charts-chartjs-adapter-luxon',
-    directory=os.path.join(resources_dir, 'charjs-adapter-luxon'),
-    path='charjs-adapter-luxon',
+    directory=os.path.join(resources_dir, 'chartjs-adapter-luxon'),
+    path='chartjs-adapter-luxon',
     group=resources
 )
 chartjsadapterluxon_resources.add(wr.ScriptResource(
-    name='charjs-adapter-luxon-js',
+    name='chartjs-adapter-luxon-js',
     depends=[
         'chart-js',
         'luxon-js'
@@ -69,4 +69,4 @@ def configure_resources(settings):
 
     include =  False if included('cone.charts.luxon') else 'authenticated'
     set_resource_include(settings, 'luxon-js', include)
-    set_resource_include(settings, 'charjs-adapter-luxon-js', include)
+    set_resource_include(settings, 'chartjs-adapter-luxon-js', include)

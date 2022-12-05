@@ -3,7 +3,7 @@ from .chart import ChartTile
 
 class PieChartTile(ChartTile):
     """Piechart options documentation:
-    https://www.chartjs.org/docs/latest/charts/doughnut.html
+    https://www.chartjs.org/docs/latest/charts/doughnut.html#pie
     """
 
     chart_type = 'pie'
