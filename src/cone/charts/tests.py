@@ -1,19 +1,33 @@
 from cone.app.model import BaseNode
-from cone.charts import testing
+from cone.app.testing import Security
 from cone.charts.browser.bar import BarChartTile
+from cone.charts.browser.bubble import BubbleChartTile
 from cone.charts.browser.chart import chart_tile
+from cone.charts.browser.doughnut import DoughnutChartTile
 from cone.charts.browser.line import LineChartTile
 from cone.charts.browser.pie import PieChartTile
 from cone.charts.browser.polar import PolarChartTile
 from cone.charts.browser.radar import RadarChartTile
 from cone.charts.browser.scatter import ScatterChartTile
-from cone.charts.browser.doughnut import DoughnutChartTile
-from cone.charts.browser.bubble import BubbleChartTile
 from node.tests import NodeTestCase
+import sys
+import unittest
 
 
-class TestBrowserCharts(NodeTestCase):
-    layer = testing.chart_layer
+class ChartsLayer(Security):
+
+    def make_app(self):
+        plugins = ['cone.charts']
+        kw = dict()
+        kw['cone.plugins'] = '\n'.join(plugins)
+        super().make_app(**kw)
+
+
+charts_layer = ChartsLayer()
+
+
+class TestCharts(NodeTestCase):
+    layer = charts_layer
 
     def test_line_chart(self):
         request = self.layer.new_request()
@@ -134,7 +148,7 @@ class TestBrowserCharts(NodeTestCase):
         chart_tile.render()
         with self.assertRaises(NotImplementedError):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
-    
+
     def test_doughnut_chart(self):
         request = self.layer.new_request()
         chart_tile = DoughnutChartTile()
@@ -158,4 +172,20 @@ class TestBrowserCharts(NodeTestCase):
         obj.model = BaseNode()
         obj = chart_tile()(obj)
         view, view_name, arg1, arg2 = obj.__venusian_callbacks__['pyramid'][0]
-        self.assertEqual(view_name, 'cone.charts.tests.test_browserchart')
+        self.assertEqual(view_name, 'cone.charts.tests')
+
+
+def run_tests():
+    from cone.charts import tests
+    from zope.testrunner.runner import Runner
+
+    suite = unittest.TestSuite()
+    suite.addTest(unittest.findTestCases(tests))
+
+    runner = Runner(found_suites=[suite])
+    runner.run()
+    sys.exit(int(runner.failed))
+
+
+if __name__ == '__main__':
+    run_tests()
