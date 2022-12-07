@@ -41,9 +41,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'line')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "line", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``LineChartTile`` does not implement ``chart_data``'
+        )
 
     def test_pie_chart(self):
         request = self.layer.new_request()
@@ -57,9 +73,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'pie')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "pie", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``PieChartTile`` does not implement ``chart_data``'
+        )
 
     def test_bar_chart(self):
         request = self.layer.new_request()
@@ -81,9 +113,33 @@ class TestCharts(NodeTestCase):
             }
         })
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "bar", '
+                     '"options": {'
+                         '"options": {'
+                             '"scales": {'
+                                 '"y": {'
+                                     '"beginAtZero": true'
+                                 '}'
+                             '}'
+                         '}'
+                     '}, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``BarChartTile`` does not implement ``chart_data``'
+        )
 
     def test_polar_chart(self):
         request = self.layer.new_request()
@@ -97,9 +153,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'polarArea')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "polarArea", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``PolarChartTile`` does not implement ``chart_data``'
+        )
 
     def test_radar_chart(self):
         request = self.layer.new_request()
@@ -113,9 +185,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'radar')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "radar", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``RadarChartTile`` does not implement ``chart_data``'
+        )
 
     def test_scatter_chart(self):
         request = self.layer.new_request()
@@ -129,9 +217,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'scatter')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "scatter", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``ScatterChartTile`` does not implement ``chart_data``'
+        )
 
     def test_bubble_chart(self):
         request = self.layer.new_request()
@@ -145,9 +249,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'bubble')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "bubble", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``BubbleChartTile`` does not implement ``chart_data``'
+        )
 
     def test_doughnut_chart(self):
         request = self.layer.new_request()
@@ -161,9 +281,25 @@ class TestCharts(NodeTestCase):
         self.assertEqual(chart_tile.chart_type, 'doughnut')
         self.assertEqual(chart_tile.chart_options, None)
         self.assertEqual(chart_tile.chart_params, {})
-        chart_tile.render()
-        with self.assertRaises(NotImplementedError):
+        self.assertEqual(chart_tile.render(), (
+            '<div class="cone-chart"'
+            '     id="cone-chart"'
+            '     data-chart-settings=\'{'
+                     '"factory": "cone_charts.ChartTile", '
+                     '"type": "doughnut", '
+                     '"options": null, '
+                     '"params": {}, '
+                     '"data_source": "http://example.com/None_chart_data"'
+                 '}\' >'
+            '  <canvas></canvas>'
+            '</div>'
+        ))
+        with self.assertRaises(NotImplementedError) as arc:
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``DoughnutChartTile`` does not implement ``chart_data``'
+        )
 
     def test_chart_tile_decorator(self):
         request = self.layer.new_request()
