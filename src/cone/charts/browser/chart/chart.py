@@ -123,7 +123,8 @@ class ChartTile(Tile):
     Chart settings passed to the ChartJS constructor.
     Reference: https://www.chartjs.org/docs/4.0.1/general/options.html
 
-    e.g.
+    .. code-block:: python
+    
         'options': {
             'responsive': True,
             'plugins': {

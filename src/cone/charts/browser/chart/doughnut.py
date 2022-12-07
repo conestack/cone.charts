@@ -5,14 +5,19 @@ class DoughnutChartTile(ChartTile):
     """Tile rendering a doughnut chart."""
 
     chart_type = 'doughnut'
-    """Setting chart type to 'doughnut'. """
+    """Setting chart type to 'doughnut'."""
 
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/doughnut.html
+        `doughnut chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/doughnut.html>`_
+        
         Example:
+        .. code-block:: python
+
             return {
                 labels: [
                     'Red',

@@ -5,7 +5,7 @@ class BarChartTile(ChartTile):
     """Barchart tile."""
 
     chart_type = 'bar'
-    """Setting chart type to 'bar'. """
+    """Setting chart type to 'bar'."""
 
     chart_options = {
         'options': {
@@ -21,9 +21,14 @@ class BarChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/bar.html
+        `bar chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/bar.html>`_
+
         Example:
+        .. code-block:: python
+
             return {
                 'labels': labels,
                 'datasets': [

@@ -5,14 +5,19 @@ class PieChartTile(ChartTile):
     """Piechart tile."""
 
     chart_type = 'pie'
-    """Setting chart type to 'pie'. """
+    """Setting chart type to 'pie'."""
 
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/doughnut.html#pie
+        `pie chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/doughnut.html#pie>`_
+
         Example:
+        .. code-block:: python
+
             return {
                 'labels': labels,
                 'datasets': [

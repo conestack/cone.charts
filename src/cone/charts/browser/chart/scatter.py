@@ -5,14 +5,19 @@ class ScatterChartTile(ChartTile):
     """ Tile rendering a scatter chart."""
 
     chart_type = 'scatter'
-    """Setting chart type to 'scatter'. """
+    """Setting chart type to 'scatter'."""
 
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/scatter.html
+        `scatter chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/scatter.html>`_
+        
         Example:
+        .. code-block:: python
+
             return {
                 datasets: [{
                     label: 'Scatter Dataset',

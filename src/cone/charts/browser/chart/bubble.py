@@ -2,17 +2,22 @@ from .chart import ChartTile
 
 
 class BubbleChartTile(ChartTile):
-    """ Tile rendering a bubble chart."""
+    """Tile rendering a bubble chart."""
 
     chart_type = 'bubble'
-    """Setting chart type to 'bubble'. """
+    """Setting chart type to 'bubble'."""
 
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/bubble.html
+        `bubble chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/bubble.html>`_
+        
         Example:
+        .. code-block:: python
+
             return {
                 'datasets': [{
                     'label': 'First Dataset',

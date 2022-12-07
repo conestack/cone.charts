@@ -49,6 +49,7 @@ Mixed chart types are not supported, but can be extended.
 
 The following example shows how to use linechart.
 
+
 .. code-block:: python
 
     from cone.charts.browser.chart import chart_tile

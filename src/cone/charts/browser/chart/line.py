@@ -5,14 +5,19 @@ class LineChartTile(ChartTile):
     """Tile rendering a line chart."""
 
     chart_type = 'line'
-    """Setting chart type to 'line'. """
+    """Setting chart type to 'line'."""
 
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/line.html
+        `radar chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/radar.html>`_
+
         Example:
+        .. code-block:: python
+
             return {
                 'labels': labels,
                 'datasets': [

@@ -10,9 +10,14 @@ class PolarChartTile(ChartTile):
     @staticmethod
     def chart_data(model, request):
         """Return chart data as dict.
+
         Refer to chart.js documentation for more information.
-        https://www.chartjs.org/docs/4.0.1/charts/polar.html
+        `radar chart documentation 
+        <https://www.chartjs.org/docs/4.0.1/charts/polar.html>`_
+        
         Example:
+        .. code-block:: python
+
             return {
                 'labels': labels,
                 'datasets': [
