@@ -14,41 +14,34 @@
     :target: https://coveralls.io/github/bluedynamics/cone.charts?branch=master
 
 This package provides `Chart.js <https://www.chartjs.org/>`_ integration in to
-cone.app.
+``cone.app``.
 
-* As chartjs libary, `Chart.js <https://www.chartjs.org/>`_ (v4.0.1) is included.
+* Currently version v4.0.1 of ``Chart.js`` is included.
 
 * For building time and date based charts,
-  `Luxon <https://github.com/moment/luxon/>`_ (v3.0.3) is included.
+  `Luxon <https://github.com/moment/luxon/>`_ v3.0.3 is included.
 
-* Adapter for Luxon for Chart-js
+* For ``Luxon`` integration into ``Chart.js``,
   `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_
-  (v1.2.1).
+  is required which is included in version v1.2.1.
 
 
 Resources
 ---------
 
 The following ``cone.charts`` related application configuration options are
-available :
+available:
 
-- **cone.charts.luxon**: Flag whether to disable ``Luxon``
-  plugin. Defaults to `false`.
+- **cone.charts.luxon**: Flag whether ``Luxon`` resources are delivered to
+  browser. Defaults to `false`.
 
 
-Chart Widget
-------------
+Chart Tile
+----------
 
-A chart widget tile is available in ``cone.charts``. It is a wrapper around
-the ``chartjs`` library and can be used in ``cone.app`` applications.
-By default it provides a ``line``, ``bar``, ``pie``, ``scatter``, ``doughnut``, 
-``radar``, ``bubble`` and ``polar`` chart, but
-can be extended with other chart types.
+Some chart basic tiles are available in ``cone.charts``.
 
-Mixed chart types are not supported, but can be extended.
-
-The following example shows how to use linechart.
-
+The following example shows how to implement a linechart:
 
 .. code-block:: python
 
@@ -73,10 +66,13 @@ The following example shows how to use linechart.
                 }],
             }
 
+Please refer to the source code in ``cone.charts.browser`` package for
+available chart tiles.
+
 
 Contributors
 ============
 
 - Robert Niederreiter
 - Torben Baumgartner
-
+- Lena Daxenbichler

@@ -10,8 +10,8 @@ import venusian
 class chart_tile(tile):
     """Extended tile decorator for registering chart tiles.
 
-    Additionally registers a JSON view which gets used to query chart data from
-    browser.
+    Additionally registers a JSON view which gets used in browser to query
+    chart data from server.
     """
 
     def create_data_view(self, ob):
@@ -67,34 +67,34 @@ class chart_tile(tile):
 
 
 class ChartTile(Tile):
-    """Tile rendering a chart."""
+    """Tile for rendering a chart."""
 
     chart_factory = 'cone_charts.ChartTile'
-    """Factory used for chart creation in javascript.
+    """Factory used for chart creation in JavaScript.
 
     The defined factory must accept the chart related DOM element and the
     chart settings as arguments and is responsible for creating the chart.
 
     It points to a class or function and gets searched by dot separated path
-    on window, e.g. 
+    on browser window, e.g ``cone_charts.ChartTile`` corresponds to:
 
-    'cone_charts.ChartTile'
+    .. code-block:: js
 
-    corresponds to
+        window.cone_charts: {
+            ChartTile: ...
+        }
 
-    window.cone_charts:{
-        ChartTile: ....
-    }
+    If JS chart implementation needs to be customized, it can be done by
+    subclassing ``cone_chart.ChartTile`` and setting it as ``chart_factory``:
 
-    If JS chart factory needs to be customized, it can be done by
-    subclassing 'cone_chart.ChartTile':
-        my_namespace = {}
-        my_namespace.Chart = class extends cone_charts.ChartTile {
-            constructor(element, settings) {
-                super(element, settings);
-                // custom code
+    .. code-block:: js
+
+        my_namespace = {};
+
+        my_namespace.MyChart = class extends cone_charts.ChartTile {
+            constructor(elem, settings) {
+                ...
             }
-            // custom code
         }
     """
 
@@ -110,8 +110,8 @@ class ChartTile(Tile):
     chart_css = 'cone-chart'
     """CSS class of chart DOM element.
 
-    The default JS chart implementation searches for all `div` elements with
-    `cone-chart` class and initializes a chart instance for each of them.
+    The default JS chart implementation searches for all ``div`` elements with
+    ``cone-chart`` class and initializes a chart instance for each of them.
 
     If chart instance needs to be customized clientside this property must be
     overwritten and the custom JS chart implementation must be adapted to
@@ -119,13 +119,13 @@ class ChartTile(Tile):
     """
 
     chart_options = None
-    """
-    Chart settings passed to the ChartJS constructor.
+    """Chart settings passed to the ChartJS constructor.
+
     Reference: https://www.chartjs.org/docs/4.0.1/general/options.html
 
     .. code-block:: python
     
-        'options': {
+        chart_options = {
             'responsive': True,
             'plugins': {
                 'legend': {
@@ -137,21 +137,19 @@ class ChartTile(Tile):
                 }
             }
         }
-
     """
 
     chart_params = {}
     """Dict containing request parameters which gets sent to server when
     querying chart data.
 
-    By default empty, can be overwritten by subclassing.
-    Handy for passing additional parameters to chart data view.
+    By default empty, can be overwritten on subclass.
     """
 
     @property
     def chart_settings(self):
         """Dictionary containing chart settings. These settings get passed to
-        the JS chart constructor.
+        the chart factory on client side.
 
         This property can be customized to pass additional settings to
         custom chart factory if needed.
@@ -165,22 +163,20 @@ class ChartTile(Tile):
                 self.request,
                 node=self.model,
                 resource='{}_chart_data'.format(self.name)
-            ),
+            )
         )
 
     @staticmethod
     def chart_data(model, request):
-        """Return data configuration for chartjs."""
+        """Chart data as dict."""
         raise NotImplementedError(
-            'Abstract ``ChartDataProvider``does implement ``data``.'
+            'Abstract ``ChartTile``does implement ``chart_data``'
         )
 
     def render(self):
-        """Renders a div element with chart settings as JSON data attribute
-        and a canvas which get used by the chartjs library to render the chart.
-
-        When editing of the chart appearance is needed, this can be done by
-        editing the div element.
+        """Renders a ``div`` element with chart settings as JSON data attribute
+        and a canvas which get used by the ``Chart.js`` library to render the
+        chart.
         """
         return (
             u'<div class="{css}"'

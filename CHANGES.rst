@@ -4,5 +4,5 @@ Changes
 0.1 (unreleased)
 ----------------
 
-- Initial release.
-  [rnix, toalba]
+- Initial work.
+  [rnix, toalba, lenadax]

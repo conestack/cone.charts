@@ -4,9 +4,9 @@ export class ChartTile extends ts.Events {
 
     /**
      * Initializes a chart instance for each div DOM element with
-     * ``cone-chart`` CSS class set
+     * ``cone-chart`` CSS class set.
      *
-     * @param {$} jQuery wrapped context
+     * @param {$} context - jQuery wrapped DOM context.
      */
     static initialize(context) {
         $('div.cone-chart', context).each(function () {
@@ -22,9 +22,13 @@ export class ChartTile extends ts.Events {
     /**
      * Create a Chart object.
      *
-     * @param {$}  jQuery wrapped chart container element.
-     * @param {Object} settings chart setting object for type, options, 
-     * data_source and params
+     * @param {$} elem - jQuery wrapped chart container DOM element.
+     * @param {Object} settings - Object containing chart settings.
+     * @param {String} settings.type - Type of the chart.
+     * @param {Object} settings.options - Options of the chart.
+     * @param {String} settings.data_source - URL to fetch chart data from.
+     * @param {Object} settings.params - Request params which gets sent when
+     * fetching chart data.
      */
     constructor(elem, settings) {
         super();
@@ -43,11 +47,8 @@ export class ChartTile extends ts.Events {
         this.chart = null;
 
         // binding event handlers
-        this.on_data_load = this.on_data_load.bind(this);
-
-        // calling abstract methods for subclasses
-        this.prepare_options();
-        this.prepare_params();
+        this.on_before_load = this.on_before_load.bind(this);
+        this.on_data_loaded = this.on_data_loaded.bind(this);
 
         // calling chart loader function
         this.load();
@@ -55,10 +56,13 @@ export class ChartTile extends ts.Events {
 
     /**
      * Loads the chart data from the server.
-     * calls ``on_data_load`` when data is loaded
-    */
+     *
+     * ``on_before_load`` event is fired before request gets sent.
+     * ``on_data_loaded`` event is fired when data is loaded.
+     */
     load() {
         this.unload();
+        this.trigger('on_before_load');
         ts.ajax.request({
             url: this.data_source,
             type: 'json',
@@ -67,8 +71,7 @@ export class ChartTile extends ts.Events {
             params: this.params,
             success: (data) => {
                 this.data = data;
-                this.prepare_data()
-                this.trigger('on_data_load');
+                this.trigger('on_data_loaded');
             }
         });
     }
@@ -79,45 +82,31 @@ export class ChartTile extends ts.Events {
     unload() {
         if (this.chart !== null) {
             this.chart.destroy();
+            this.chart = null;
         }
     }
 
     /**
-     * Event handler gets called when ts.ajax instance is destroyed.
+     * Function which gets called when treibstoff removes part of DOM
+     * containing a chart.
      */
     destroy() {
         this.unload();
     }
 
+    /**
+     * Default event handler for ``on_before_load`` event.
+     *
+     * Does nothing.
+     */
 
     /**
-     * Event handler gets called when chart data is loaded.
-     * can be overridden to prepare data before creating chart
-     * calls ``create_chart`` to create the chart
+     * Default event handler for ``on_data_loaded`` event.
+     *
+     * Calls ``create_chart``
      */
-    on_data_load() {
+    on_data_loaded() {
         this.create_chart();
-    }
-
-    /**
-     * abstract method
-     * can be overridden to prepare options
-     */
-    prepare_options() {
-    }
-
-    /**
-     * abstract method
-     * can be overridden to prepare params
-     */
-    prepare_params() {
-    }
-
-    /**
-     * abstract method
-     * can be overridden to prepare data
-     */
-    prepare_data() {
     }
 
     /**

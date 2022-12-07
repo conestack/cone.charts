@@ -16,7 +16,7 @@ class TestBrowserCharts(NodeTestCase):
     layer = testing.chart_layer
 
     def test_line_chart(self):
-        """Testing the line chart tile and the pre-configurations"""
+        """Testing the line chart tile and the pre-configurations."""
         request = self.layer.new_request()
         chart_tile = LineChartTile()
         chart_tile.request = request
@@ -159,14 +159,12 @@ class TestBrowserCharts(NodeTestCase):
         with self.assertRaises(NotImplementedError):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
-
     def test_chart_tile_decorator(self):
-        """ Testing the chart tile decorator
-            @chart_tile(
-                name='test',
-                interface=BaseNode,
-                permission='view',
-            )
+        """Testing the chart tile decorator.
+
+        .. code-block:: python
+
+            @chart_tile(name='test', interface=BaseNode, permission='view')
             class TestChartTile(LineChartTile):
                 ...
         """

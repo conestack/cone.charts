@@ -32,13 +32,13 @@ luxon_resources.add(wr.ScriptResource(
     compressed='luxon.min.js'
 ))
 
-chartjsadapterluxon_resources = wr.ResourceGroup(
+chartjs_adapterluxon_resources = wr.ResourceGroup(
     name='cone.charts-chartjs-adapter-luxon',
     directory=os.path.join(resources_dir, 'chartjs-adapter-luxon'),
     path='chartjs-adapter-luxon',
     group=resources
 )
-chartjsadapterluxon_resources.add(wr.ScriptResource(
+chartjs_adapterluxon_resources.add(wr.ScriptResource(
     name='chartjs-adapter-luxon-js',
     depends=[
         'chart-js',
@@ -49,13 +49,13 @@ chartjsadapterluxon_resources.add(wr.ScriptResource(
 ))
 
 cone_charts_resources = wr.ResourceGroup(
-    name='cone.cone_charts',
+    name='cone.charts-charts',
     directory=os.path.join(resources_dir, 'cone_charts'),
     path='cone_charts',
     group=resources
 )
 cone_charts_resources.add(wr.ScriptResource(
-    name='cone_charts-js',
+    name='cone-charts-js',
     resource='cone.charts.js',
     compressed='cone.charts.min.js'
 ))
@@ -65,7 +65,7 @@ def configure_resources(settings):
         return settings.get(name, 'false') == 'true'
 
     set_resource_include(settings, 'chart-js', 'authenticated')
-    set_resource_include(settings, 'cone_charts-js', 'authenticated')
+    set_resource_include(settings, 'cone-charts-js', 'authenticated')
 
     include =  False if included('cone.charts.luxon') else 'authenticated'
     set_resource_include(settings, 'luxon-js', include)
