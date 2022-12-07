@@ -16,7 +16,6 @@ class TestBrowserCharts(NodeTestCase):
     layer = testing.chart_layer
 
     def test_line_chart(self):
-        """Testing the line chart tile and the pre-configurations."""
         request = self.layer.new_request()
         chart_tile = LineChartTile()
         chart_tile.request = request
@@ -33,7 +32,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_pie_chart(self):
-        """Testing the pie chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = PieChartTile()
         chart_tile.request = request
@@ -50,7 +48,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_bar_chart(self):
-        """Testing the bar chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = BarChartTile()
         chart_tile.request = request
@@ -75,7 +72,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_polar_chart(self):
-        """Testing the polar chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = PolarChartTile()
         chart_tile.request = request
@@ -92,7 +88,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_radar_chart(self):
-        """Testing the radar chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = RadarChartTile()
         chart_tile.request = request
@@ -109,7 +104,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_scatter_chart(self):
-        """Testing the scatter chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = ScatterChartTile()
         chart_tile.request = request
@@ -126,7 +120,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_bubble_chart(self):
-        """Testing the bubble chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = BubbleChartTile()
         chart_tile.request = request
@@ -143,7 +136,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
     
     def test_doughnut_chart(self):
-        """Testing the doughnut chart tile and the pre-configurations"""
         request = self.layer.new_request()
         chart_tile = DoughnutChartTile()
         chart_tile.request = request
@@ -160,14 +152,6 @@ class TestBrowserCharts(NodeTestCase):
             chart_tile.chart_data(chart_tile.model, chart_tile.request)
 
     def test_chart_tile_decorator(self):
-        """Testing the chart tile decorator.
-
-        .. code-block:: python
-
-            @chart_tile(name='test', interface=BaseNode, permission='view')
-            class TestChartTile(LineChartTile):
-                ...
-        """
         request = self.layer.new_request()
         obj = LineChartTile()
         obj.request = request

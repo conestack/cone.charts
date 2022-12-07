@@ -2,25 +2,27 @@ from .chart import ChartTile
 
 
 class BubbleChartTile(ChartTile):
-    """Tile rendering a bubble chart."""
+    """A bubble chart.
+
+    Refer to
+    `documentation <https://www.chartjs.org/docs/4.0.1/charts/bubble.html>`_
+    for detailed information about valid options and data.
+    """
 
     chart_type = 'bubble'
-    """Setting chart type to 'bubble'."""
+    """Tell JavaScript side to render a bubble chart."""
 
     @staticmethod
     def chart_data(model, request):
-        """Return chart data as dict.
+        """Bubble chart data.
 
-        Refer to chart.js documentation for more information.
-        `bubble chart documentation 
-        <https://www.chartjs.org/docs/4.0.1/charts/bubble.html>`_
-        
         Example:
+
         .. code-block:: python
 
             return {
                 'datasets': [{
-                    'label': 'First Dataset',
+                    'label': 'Dataset',
                     'data': [{
                         x: 20,
                         y: 30,
@@ -34,4 +36,6 @@ class BubbleChartTile(ChartTile):
                 }]
             }
         """
-        raise NotImplementedError('Chart data not implemented')
+        raise NotImplementedError(
+            'Abstract ``BubbleChartTile`` does not implement ``chart_data``'
+        )

@@ -2,26 +2,28 @@ from .chart import ChartTile
 
 
 class ScatterChartTile(ChartTile):
-    """ Tile rendering a scatter chart."""
+    """A scatter chart.
+
+    Refer to
+    `documentation <https://www.chartjs.org/docs/4.0.1/charts/scatter.html>`_
+    for detailed information about valid options and data.
+    """
 
     chart_type = 'scatter'
-    """Setting chart type to 'scatter'."""
+    """Tell JavaScript side to render a scatter chart."""
 
     @staticmethod
     def chart_data(model, request):
-        """Return chart data as dict.
+        """Scatter chart data.
 
-        Refer to chart.js documentation for more information.
-        `scatter chart documentation 
-        <https://www.chartjs.org/docs/4.0.1/charts/scatter.html>`_
-        
         Example:
+
         .. code-block:: python
 
             return {
-                datasets: [{
-                    label: 'Scatter Dataset',
-                    data: [{
+                'datasets': [{
+                    'label': 'Dataset',
+                    'data': [{
                         x: -10,
                         y: 0
                     }, {
@@ -34,8 +36,10 @@ class ScatterChartTile(ChartTile):
                         x: 0.5,
                         y: 5.5
                     }],
-                    backgroundColor: 'rgb(255, 99, 132)'
+                    'backgroundColor': 'rgb(255, 99, 132)'
                 }],
             }
         """
-        raise NotImplementedError('Chart data not implemented')
+        raise NotImplementedError(
+            'Abstract ``ScatterChartTile`` does not implement ``chart_data``'
+        )

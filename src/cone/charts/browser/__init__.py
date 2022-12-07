@@ -7,7 +7,6 @@ import webresource as wr
 resources_dir = os.path.join(os.path.dirname(__file__), 'static')
 
 
-# chartjs
 chartjs_resources = wr.ResourceGroup(
     name='cone.charts-chartjs',
     directory=os.path.join(resources_dir, 'chartjs'),
@@ -59,6 +58,7 @@ cone_charts_resources.add(wr.ScriptResource(
     resource='cone.charts.js',
     compressed='cone.charts.min.js'
 ))
+
 
 def configure_resources(settings):
     def included(name):
