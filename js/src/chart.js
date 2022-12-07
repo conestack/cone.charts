@@ -87,8 +87,11 @@ export class ChartTile extends ts.Events {
     }
 
     /**
-     * Function which gets called when treibstoff removes part of DOM
-     * containing a chart.
+     * Destroy chart instance.
+     *
+     * This function gets called if chart instance was attached by
+     * ``ts.ajax.attach`` as soon as treibstoff removes part of DOM
+     * containing the chart DOM element related to this instance.
      */
     destroy() {
         this.unload();
@@ -99,6 +102,8 @@ export class ChartTile extends ts.Events {
      *
      * Does nothing.
      */
+    on_before_load() {
+    }
 
     /**
      * Default event handler for ``on_data_loaded`` event.
