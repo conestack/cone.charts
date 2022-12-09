@@ -4,6 +4,15 @@ cone.charts
 **Chart.js intergration into cone.app**
 
 
+Overview
+--------
+
+XX
+
+
+API
+---
+
 .. autoclass:: cone.charts.browser.chart.chart_tile
    :members:
 
