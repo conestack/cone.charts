@@ -1,3 +1,4 @@
+/** @module cone_charts */
 import $ from 'jquery';
 
 export class ChartTile extends ts.Events {

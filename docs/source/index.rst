@@ -117,6 +117,13 @@ Javascript
 
 .. js:autoclass:: ChartTile
    :members:
+        initialize,
+        load,
+        unload,
+        destroy,
+        on_before_load,
+        on_data_loaded,
+        create_chart
 
 
 Source Code
