@@ -21,7 +21,7 @@ class PieChartTile(ChartTile):
         .. code-block:: python
 
             return {
-                'labels': labels,
+                'labels': ['January', 'February', 'March']
                 'datasets': [{
                     'label': 'Dataset 1',
                     'data': [10, 20, 30],
