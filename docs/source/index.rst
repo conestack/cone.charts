@@ -112,6 +112,13 @@ BubbleChart
    :members:
 
 
+Javascript
+----------
+
+.. js:autoclass:: ChartTile
+   :members:
+
+
 Source Code
 -----------
 

@@ -55,7 +55,8 @@ setup(
         ],
         docs=[
             'Sphinx',
-            'sphinx-conestack-theme'
+            'sphinx-conestack-theme',
+            'sphinx_js'
         ]
     ),
     tests_require=['zope.testrunner'],
