@@ -186,7 +186,7 @@ class ChartTile(Tile):
         and gets called from client side to query chart data.
 
         Refer to
-        `documentation <https://www.chartjs.org/docs/4.0.1/charts>`_
+        `documentation <https://www.chartjs.org/docs/4.0.1/>`_
         for detailed information about chart data.
         """
         raise NotImplementedError(
