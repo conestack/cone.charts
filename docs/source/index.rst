@@ -3,12 +3,21 @@ cone.charts
 
 **Chart.js intergration into cone.app**
 
+This package provides `Chart.js <https://www.chartjs.org/>`_ integration in to
+``cone.app``.
 
-Overview
---------
+* Currently version v4.0.1 of ``Chart.js`` is included.
+
+* For building time and date based charts,
+  `Luxon <https://github.com/moment/luxon/>`_ v3.0.3 is included.
+
+* For ``Luxon`` integration into ``Chart.js``,
+  `chartjs-adapter-luxon <https://github.com/chartjs/chartjs-adapter-luxon>`_
+  is required which is included in version v1.2.1.
+
 
 Resources
-^^^^^^^^^
+---------
 
 The following ``cone.charts`` related application configuration options are
 available:
@@ -17,12 +26,18 @@ available:
   browser. Defaults to `false`.
 
 
-Chart Tile
-^^^^^^^^^^
+Chart Tiles
+-----------
 
-Some chart basic tiles are available in ``cone.charts``.
+Charts are implemented as chart
+`tiles <https://github.com/conestack/cone.tile/>`_. Base classes for different
+types chart types can be found in ``cone.charts.browser`` package.
 
-The following example shows how to implement a linechart:
+For chart tile registration, an extended tile decorator is used, which
+additionally to the tile registers a JSON view where the chart data gets
+fetched from.
+
+The following example shows how to implement a line chart:
 
 .. code-block:: python
 
@@ -47,15 +62,12 @@ The following example shows how to implement a linechart:
                 }],
             }
 
-Please refer to the source code in ``cone.charts.browser`` package for
-available chart tiles.
-
 
 API
 ---
 
 Base Chart Tile
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 .. autoclass:: cone.charts.browser.chart.chart_tile
    :members:
@@ -65,49 +77,57 @@ Base Chart Tile
 
 
 LineChart
-^^^^^^^^^
+~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.line.LineChartTile
    :members:
 
 
 BarChart
-^^^^^^^^
+~~~~~~~~
+
 .. autoclass:: cone.charts.browser.bar.BarChartTile
    :members:
 
 
 Polarchart
-^^^^^^^^^^
+~~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.polar.PolarChartTile
    :members:
 
 
 RadarChart
-^^^^^^^^^^
+~~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.radar.RadarChartTile
    :members:
 
 
 DoughnutChart
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.doughnut.DoughnutChartTile
    :members:
 
 
 PieChart
-^^^^^^^^
+~~~~~~~~
+
 .. autoclass:: cone.charts.browser.pie.PieChartTile
    :members:
 
 
 ScatterChart
-^^^^^^^^^^^^
+~~~~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.scatter.ScatterChartTile
    :members:
 
 
 BubbleChart
-^^^^^^^^^^^
+~~~~~~~~~~~
+
 .. autoclass:: cone.charts.browser.bubble.BubbleChartTile
    :members:
 
