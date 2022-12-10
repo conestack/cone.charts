@@ -11,7 +11,7 @@ def initialize_charts(config, global_config, settings):
     # application startup initialization
 
     # static resources
-    configure_resources(settings)
+    configure_resources(config, settings)
 
     # scan browser package
     config.scan('cone.charts.browser')
