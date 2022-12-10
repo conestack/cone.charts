@@ -4,7 +4,6 @@ from cone.tile import Tile
 from cone.tile import tile
 import json
 import sys
-import venusian
 
 
 class chart_tile(tile):
@@ -62,7 +61,6 @@ class chart_tile(tile):
         )
 
     def __call__(self, ob):
-        self.venusian = venusian
         self.create_data_view(ob)
 
         def callback(context, name, ob_):
