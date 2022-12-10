@@ -49,7 +49,18 @@ setup(
         'setuptools',
         'cone.app'
     ],
-    extras_require=dict(test=['zope.testrunner']),
+    extras_require=dict(
+        test=[
+            'zope.testrunner'
+        ],
+        docs=[
+            'Jinja2<3.0',
+            'markupsafe<2.1.0',
+            'Sphinx',
+            'sphinx-conestack-theme',
+            'sphinx-js'
+        ]
+    ),
     tests_require=['zope.testrunner'],
     cmdclass=dict(test=Test)
 )

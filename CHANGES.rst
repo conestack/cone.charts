@@ -4,12 +4,5 @@ Changes
 0.1 (unreleased)
 ----------------
 
-- Initial release.
-  [rnix]
-
-0.2
-----------------
-
-- Update chartjs to 4.0.1
-- Update chartjs-adapter-luxon to 1.2.1
-  [toalba]
+- Initial work.
+  [rnix, toalba, lenadax]
