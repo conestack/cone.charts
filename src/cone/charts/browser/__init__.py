@@ -64,5 +64,6 @@ def configure_resources(config, settings):
     config.set_resource_include('cone-charts-js', 'authenticated')
 
     include = settings.get('cone.charts.luxon') in ['True', 'true', '1']
+    include = 'authenticated' if include else False
     config.set_resource_include('luxon-js', include)
     config.set_resource_include('chartjs-adapter-luxon-js', include)
