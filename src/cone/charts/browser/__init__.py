@@ -55,9 +55,6 @@ cone_charts_resources.add(wr.ScriptResource(
 
 
 def configure_resources(config, settings):
-    def included(name):
-        return settings.get(name, 'false') == 'true'
-
     config.register_resource(chartjs_resources)
     config.register_resource(luxon_resources)
     config.register_resource(chartjs_adapterluxon_resources)
