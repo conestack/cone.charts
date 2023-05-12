@@ -31,7 +31,8 @@ class chart_tile(tile):
         def chart_data_view(model, request):
             return ob.chart_data(model, request)
 
-        view_name = '{}_chart_data'.format(self.name)
+        interface_title = self.interface.__name__.lower()
+        view_name = '{}_chart_data_{}'.format(self.name, interface_title)
         chart_data_view.__doc__ = (
             'Dynamically created by '
             'cone.chart.browser.chart.chart_tile'
