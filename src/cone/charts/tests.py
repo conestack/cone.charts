@@ -337,13 +337,13 @@ class TestCharts(NodeTestCase):
             '</div>'
         ))
 
-        from cone.charts.tests import test_chart_chart_data
-        self.assertEqual(test_chart_chart_data.__doc__,
+        from cone.charts.tests import chart_data_test_chart_model
+        self.assertEqual(chart_data_test_chart_model.__doc__,
             'Dynamically created by cone.chart.browser.chart.chart_tile'
         )
 
         with self.layer.authenticated('manager'):
-            res = test_chart_chart_data(model, request)
+            res = chart_data_test_chart_model(model, request)
         self.assertEqual(res, 'CHART DATA')
 
 
