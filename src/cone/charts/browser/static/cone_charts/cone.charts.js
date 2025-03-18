@@ -23,13 +23,13 @@ var cone_charts = (function (exports, $) {
             this.params = settings.params;
             this.data = null;
             this.chart = null;
-            this.on_data_load = this.on_data_load.bind(this);
-            this.prepare_options();
-            this.prepare_params();
+            this.on_before_load = this.on_before_load.bind(this);
+            this.on_data_loaded = this.on_data_loaded.bind(this);
             this.load();
         }
         load() {
             this.unload();
+            this.trigger('on_before_load');
             ts.ajax.request({
                 url: this.data_source,
                 type: 'json',
@@ -38,27 +38,23 @@ var cone_charts = (function (exports, $) {
                 params: this.params,
                 success: (data) => {
                     this.data = data;
-                    this.prepare_data();
-                    this.trigger('on_data_load');
+                    this.trigger('on_data_loaded');
                 }
             });
         }
         unload() {
             if (this.chart !== null) {
                 this.chart.destroy();
+                this.chart = null;
             }
         }
         destroy() {
             this.unload();
         }
-        on_data_load() {
+        on_before_load() {
+        }
+        on_data_loaded() {
             this.create_chart();
-        }
-        prepare_options() {
-        }
-        prepare_params() {
-        }
-        prepare_data() {
         }
         create_chart() {
             this.chart = new Chart(this.canvas, {
@@ -70,11 +66,7 @@ var cone_charts = (function (exports, $) {
     }
 
     $(function () {
-        if (window.ts !== undefined) {
-            ts.ajax.register(ChartTile.initialize, true);
-        } else {
-            bdajax.register(ChartTile.initialize, true);
-        }
+        ts.ajax.register(ChartTile.initialize, true);
     });
 
     exports.ChartTile = ChartTile;

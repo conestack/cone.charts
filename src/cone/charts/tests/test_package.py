@@ -337,7 +337,7 @@ class TestCharts(NodeTestCase):
             '</div>'
         ))
 
-        from cone.charts.tests import chart_data_test_chart_model
+        from cone.charts.tests.test_package import chart_data_test_chart_model
         self.assertEqual(chart_data_test_chart_model.__doc__,
             'Dynamically created by cone.chart.browser.chart.chart_tile'
         )
@@ -424,11 +424,11 @@ class TestResources(unittest.TestCase):
 
 
 def run_tests():
-    from cone.charts import tests
+    from cone.charts.browser.tests import test_package
     from zope.testrunner.runner import Runner
 
     suite = unittest.TestSuite()
-    suite.addTest(unittest.findTestCases(tests))
+    suite.addTest(unittest.findTestCases(test_package))
 
     runner = Runner(found_suites=[suite])
     runner.run()
