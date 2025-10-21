@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cone.charts"
+version = "0.1.dev0"
+description = "Chart.js integration into cone"
+readme = "README.rst"
+license = {text = "MIT"}
+authors = [{name = "Cone Contributors", email = "dev@conestack.org"}]
+keywords = ["node", "pyramid", "cone", "web"]
+classifiers = [
+    "Environment :: Web Environment",
+    "Programming Language :: Python",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+
+[project.optional-dependencies]
+test = [
+    "zope.pytestlayer",
+    "pytest",
+]
+docs = [
+    "Jinja2<3.0",
+    "markupsafe<2.1.0",
+    "Sphinx",
+    "sphinx-conestack-theme",
+    "sphinx-js",
+]
+
+[project.urls]
+Homepage = "http://github.com/conestack/cone.charts"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools]
+zip-safe = false
+
+[tool.setuptools.package-dir]
+"" = "src"
+
+[tool.zest-releaser]
+create-wheel = true
