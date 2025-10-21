@@ -32,5 +32,8 @@ docs = [
 [project.urls]
 Homepage = "http://github.com/conestack/cone.charts"
 
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cone"]
 [tool.zest-releaser]
 create-wheel = true
