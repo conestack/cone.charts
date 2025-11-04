@@ -1,14 +1,15 @@
-.python-version
 *.egg-info
 *.pyc
 *.pyo
+/.coverage
 /.mxmake/
 /.project
+/.python-version
 /.venv/
 /.vscode/
+/build/
 /constraints-mxdev.txt
 /coverage/
-.coverage
 /dist/
 /node_modules/
 /package-lock.json
@@ -18,5 +19,3 @@
 /src/cone.calendar.egg-info/
 /var/
 /venv/
-
-/build
