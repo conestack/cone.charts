@@ -5,7 +5,6 @@
 /.mxmake/
 /.project
 /.python-version
-/.venv/
 /.vscode/
 /build/
 /constraints-mxdev.txt
