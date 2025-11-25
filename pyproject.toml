@@ -61,7 +61,6 @@ exclude = [
     "/package.json",
     "/pnpm-lock.yaml",
     "/scripts/",
-    "/src/cone/charts/tests",
 ]
 
 [tool.hatch.build.targets.wheel]
