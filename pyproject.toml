@@ -26,6 +26,7 @@ classifiers = [
 test = [
     "zope.pytestlayer",
     "pytest",
+    "cone.app[test]"
 ]
 docs = [
     "Jinja2<3.0",
