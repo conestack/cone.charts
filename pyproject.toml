@@ -21,17 +21,20 @@ classifiers = [
     "Programming Language :: Python :: 3.14",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
+dependencies = [
+    "cone.app>1.0.99",
+]
 
 [project.optional-dependencies]
 test = [
-    "zope.pytestlayer",
+    "cone.app[test]",
     "pytest",
-    "cone.app[test]"
+    "zope.pytestlayer",
 ]
 docs = [
     "Jinja2<3.0",
-    "markupsafe<2.1.0",
     "Sphinx",
+    "markupsafe<2.1.0",
     "sphinx-conestack-theme",
     "sphinx-js",
 ]
