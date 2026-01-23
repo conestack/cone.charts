@@ -3,7 +3,7 @@
   "version": "0.1.0-dev",
   "devDependencies": {
     "@rollup/plugin-terser": "^0.4.4",
-    "jquery": "^4.0.0-rc.1",
+    "jquery": "^4.0.0",
     "jsdoc": "^4.0.0",
     "qunit": "^2.19.3",
     "rollup": "^2.79.2",
