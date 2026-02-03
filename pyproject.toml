@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cone.charts"
-version = "1.1.0"
+version = "1.1.1.dev0"
 description = "Chart.js integration into cone"
 dynamic = ["readme"]
 requires-python = ">=3.10"
