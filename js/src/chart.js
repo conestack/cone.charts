@@ -1,5 +1,6 @@
 /** @module cone_charts */
 import $ from 'jquery';
+import ts from 'treibstoff';
 
 export class ChartTile extends ts.Events {
 

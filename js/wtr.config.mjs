@@ -15,13 +15,14 @@ export default {
     reporters: [defaultReporter(), summaryReporter({flatten: true})],
     coverageConfig: {
         include: ['**/js/src/**/*.js'],
-        exclude: ['**/node_modules/**']
+        exclude: ['**/node_modules/**', '**/sources/treibstoff/**']
     },
     plugins: [
         importMapsPlugin({
             inject: {
                 importMap: {
                     imports: {
+                        'treibstoff': './sources/treibstoff/src/treibstoff.js',
                         'jquery': './node_modules/jquery/dist-module/jquery.module.js'
                     },
                 },
