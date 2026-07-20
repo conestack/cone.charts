@@ -1,4 +1,4 @@
-var cone_charts = (function (exports, $) {
+var cone_charts = (function (exports, $, ts) {
     'use strict';
 
     class ChartTile extends ts.Events {
@@ -75,4 +75,4 @@ var cone_charts = (function (exports, $) {
 
     return exports;
 
-})({}, jQuery);
+})({}, jQuery, treibstoff);

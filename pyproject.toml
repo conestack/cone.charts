@@ -23,6 +23,7 @@ classifiers = [
 ]
 dependencies = [
     "cone.app>1.0.99",
+    "treibstoff>1.99",
 ]
 
 [project.optional-dependencies]

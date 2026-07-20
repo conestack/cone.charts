@@ -49,6 +49,7 @@ cone_charts_resources = wr.ResourceGroup(
 )
 cone_charts_resources.add(wr.ScriptResource(
     name='cone-charts-js',
+    depends='treibstoff-js',
     resource='cone.charts.js',
     compressed='cone.charts.min.js'
 ))

@@ -14,13 +14,15 @@ export default args => {
             file: `${out_dir}/cone.charts.js`,
             format: 'iife',
             globals: {
-                jquery: 'jQuery'
+                jquery: 'jQuery',
+                treibstoff: 'treibstoff'
             },
             interop: 'default',
             sourcemap: false
         }],
         external: [
-            'jquery'
+            'jquery',
+            'treibstoff'
         ]
     };
     if (args.configDebug !== true) {
@@ -32,7 +34,8 @@ export default args => {
                 terser()
             ],
             globals: {
-                jquery: 'jQuery'
+                jquery: 'jQuery',
+                treibstoff: 'treibstoff'
             },
             interop: 'default',
             sourcemap: false

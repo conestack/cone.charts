@@ -1,4 +1,5 @@
 import $ from 'jquery';
+import ts from 'treibstoff';
 
 import { ChartTile } from './chart.js';
 
