@@ -14,7 +14,6 @@ from cone.charts.browser.scatter import ScatterChartTile
 from cone.tile import render_tile
 from node.tests import NodeTestCase
 import os
-import sys
 import unittest
 
 
@@ -303,6 +302,14 @@ class TestCharts(NodeTestCase):
         self.assertEqual(
             str(arc.exception),
             'Abstract ``DoughnutChartTile`` does not implement ``chart_data``'
+        )
+
+    def test_abstract_chart_data(self):
+        with self.assertRaises(NotImplementedError) as arc:
+            ChartTile.chart_data(BaseNode(), self.layer.new_request())
+        self.assertEqual(
+            str(arc.exception),
+            'Abstract ``ChartTile`` does not implement ``chart_data``'
         )
 
     def test_chart_tile_decorator(self):

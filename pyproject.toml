@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "cone.charts"
-version = "1.1.1.dev0"
+version = "2.0.0.dev0"
 description = "Chart.js integration into cone"
 dynamic = ["readme"]
 requires-python = ">=3.10"
@@ -22,7 +22,7 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 dependencies = [
-    "cone.app>1.0.99",
+    "cone.app>1.99",
     "treibstoff>1.99",
 ]
 
@@ -72,6 +72,12 @@ packages = ["src/cone"]
 consider_namespace_packages = true
 addopts = ["--import-mode=importlib"]
 pythonpath = "src"
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "UP"]
+# UP008: zero-argument ``super()`` breaks on ``@plumbing`` decorated classes.
+# UP031: ``%`` formatting is kept.
+ignore = ["UP008", "UP031"]
 
 [tool.zest-releaser]
 create-wheel = true

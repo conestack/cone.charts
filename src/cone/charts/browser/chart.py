@@ -32,7 +32,7 @@ class chart_tile(tile):
             return ob.chart_data(model, request)
 
         interface_title = self.interface.__name__.lower()
-        view_name = 'chart_data_{}_{}'.format(self.name, interface_title)
+        view_name = f'chart_data_{self.name}_{interface_title}'
         chart_data_view.__doc__ = (
             'Dynamically created by '
             'cone.chart.browser.chart.chart_tile'
@@ -47,7 +47,7 @@ class chart_tile(tile):
             config = context.config.with_package(info.module)
             config.add_view(
                 view=ob_,
-                name='{}_chart_data'.format(self_.name),
+                name=f'{self_.name}_chart_data',
                 context=self_.interface,
                 permission=self_.permission,
                 accept='application/json',
@@ -173,7 +173,7 @@ class ChartTile(Tile):
             data_source=make_url(
                 self.request,
                 node=self.model,
-                resource='{}_chart_data'.format(self.name)
+                resource=f'{self.name}_chart_data'
             )
         )
 
@@ -189,7 +189,7 @@ class ChartTile(Tile):
         for detailed information about chart data.
         """
         raise NotImplementedError(
-            'Abstract ``ChartTile``does implement ``chart_data``'
+            'Abstract ``ChartTile`` does not implement ``chart_data``'
         )
 
     def render(self):
@@ -198,13 +198,9 @@ class ChartTile(Tile):
         actual chart.
         """
         return (
-            u'<div class="{css}"'
-            u'     id="{id}"'
-            u'     data-chart-settings=\'{settings}\' >'
-            u'  <canvas></canvas>'
-            u'</div>'
-        ).format(
-            css=self.chart_css,
-            id=self.chart_id,
-            settings=json.dumps(self.chart_settings)
+            f'<div class="{self.chart_css}"'
+            f'     id="{self.chart_id}"'
+            f'     data-chart-settings=\'{json.dumps(self.chart_settings)}\' >'
+            '  <canvas></canvas>'
+            '</div>'
         )
