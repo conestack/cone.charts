@@ -1,7 +1,7 @@
 Changes
 =======
 
-1.1.1 (unreleased)
+1.1.1 (2026-10-24)
 ------------------
 
 - Require ``cone.app<2.0.0``. ``cone.app`` 2.0 uses Bootstrap 5, the
