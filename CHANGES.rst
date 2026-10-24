@@ -1,7 +1,7 @@
 Changes
 =======
 
-2.0.0 (unreleased)
+2.0.0 (2026-10-24)
 ------------------
 
 - Require ``cone.app`` 2.0. ``treibstoff>1.99`` is required already, which
