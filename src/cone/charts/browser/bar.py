@@ -12,15 +12,7 @@ class BarChartTile(ChartTile):
     chart_type = 'bar'
     """Tell JavaScript side to render a bar chart."""
 
-    chart_options = {
-        'options': {
-            'scales': {
-                'y': {
-                    'beginAtZero': True
-                }
-            }
-        }
-    }
+    chart_options = {'options': {'scales': {'y': {'beginAtZero': True}}}}
     """Required bar chart options."""
 
     @staticmethod

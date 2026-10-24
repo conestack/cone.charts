@@ -34,8 +34,7 @@ class chart_tile(tile):
         interface_title = self.interface.__name__.lower()
         view_name = f'chart_data_{self.name}_{interface_title}'
         chart_data_view.__doc__ = (
-            'Dynamically created by '
-            'cone.chart.browser.chart.chart_tile'
+            'Dynamically created by cone.chart.browser.chart.chart_tile'
         )
         chart_data_view.__name__ = view_name
         chart_data_view.__qualname__ = view_name
@@ -51,14 +50,12 @@ class chart_tile(tile):
                 context=self_.interface,
                 permission=self_.permission,
                 accept='application/json',
-                renderer='json'
+                renderer='json',
             )
+
         self_ = self
         info = self.venusian.attach(
-            chart_data_view,
-            callback,
-            category='pyramid',
-            depth=2
+            chart_data_view, callback, category='pyramid', depth=2
         )
 
     def __call__(self, ob):
@@ -72,8 +69,9 @@ class chart_tile(tile):
                 interface=self_.interface,
                 class_=ob_,
                 permission=self_.permission,
-                strict=self_.strict
+                strict=self_.strict,
             )
+
         self_ = self
         self.venusian.attach(ob, callback, category='pyramid', depth=1)
         return ob
@@ -171,10 +169,8 @@ class ChartTile(Tile):
             options=self.chart_options,
             params=self.chart_params,
             data_source=make_url(
-                self.request,
-                node=self.model,
-                resource=f'{self.name}_chart_data'
-            )
+                self.request, node=self.model, resource=f'{self.name}_chart_data'
+            ),
         )
 
     @staticmethod
@@ -200,7 +196,7 @@ class ChartTile(Tile):
         return (
             f'<div class="{self.chart_css}"'
             f'     id="{self.chart_id}"'
-            f'     data-chart-settings=\'{json.dumps(self.chart_settings)}\' >'
+            f"     data-chart-settings='{json.dumps(self.chart_settings)}' >"
             '  <canvas></canvas>'
             '</div>'
         )
