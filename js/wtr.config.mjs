@@ -2,6 +2,13 @@ import {importMapsPlugin} from '@web/dev-server-import-maps';
 import {playwrightLauncher} from '@web/test-runner-playwright';
 import {defaultReporter, summaryReporter} from '@web/test-runner'
 
+export const importMap = {
+    imports: {
+        'treibstoff': './sources/treibstoff/src/treibstoff.js',
+        'jquery': './node_modules/jquery/dist-module/jquery.module.js'
+    },
+};
+
 export default {
     nodeResolve: true,
     browsers: [
@@ -23,14 +30,7 @@ export default {
     },
     plugins: [
         importMapsPlugin({
-            inject: {
-                importMap: {
-                    imports: {
-                        'treibstoff': './sources/treibstoff/src/treibstoff.js',
-                        'jquery': './node_modules/jquery/dist-module/jquery.module.js'
-                    },
-                },
-            },
+            inject: {importMap},
         }),
     ],
 }
