@@ -3,7 +3,6 @@ import $ from 'jquery';
 import ts from 'treibstoff';
 
 export class ChartTile extends ts.Events {
-
     /**
      * Initializes a chart instance for each div DOM element with
      * ``cone-chart`` CSS class set.
@@ -12,11 +11,11 @@ export class ChartTile extends ts.Events {
      */
     static initialize(context) {
         $('div.cone-chart', context).each(function () {
-            let elem = $(this),
+            const elem = $(this),
                 settings = elem.data('chart-settings'),
                 factory_path = settings.factory,
                 factory = ts.object_by_path(factory_path);
-            let inst = new factory(elem, settings);
+            const inst = new factory(elem, settings);
             ts.ajax.attach(inst, elem);
         });
     }
@@ -74,7 +73,7 @@ export class ChartTile extends ts.Events {
             success: (data) => {
                 this.data = data;
                 this.trigger('on_data_loaded');
-            }
+            },
         });
     }
 
@@ -104,8 +103,7 @@ export class ChartTile extends ts.Events {
      *
      * Does nothing.
      */
-    on_before_load() {
-    }
+    on_before_load() {}
 
     /**
      * Default event handler for ``on_data_loaded`` event.
@@ -123,7 +121,7 @@ export class ChartTile extends ts.Events {
         this.chart = new Chart(this.canvas, {
             type: this.type,
             data: this.data,
-            options: this.options
+            options: this.options,
         });
     }
 }

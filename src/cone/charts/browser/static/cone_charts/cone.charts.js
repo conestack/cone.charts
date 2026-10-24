@@ -4,11 +4,11 @@ var cone_charts = (function (exports, $, ts) {
     class ChartTile extends ts.Events {
         static initialize(context) {
             $('div.cone-chart', context).each(function () {
-                let elem = $(this),
+                const elem = $(this),
                     settings = elem.data('chart-settings'),
                     factory_path = settings.factory,
                     factory = ts.object_by_path(factory_path);
-                let inst = new factory(elem, settings);
+                const inst = new factory(elem, settings);
                 ts.ajax.attach(inst, elem);
             });
         }
@@ -39,7 +39,7 @@ var cone_charts = (function (exports, $, ts) {
                 success: (data) => {
                     this.data = data;
                     this.trigger('on_data_loaded');
-                }
+                },
             });
         }
         unload() {
@@ -51,8 +51,7 @@ var cone_charts = (function (exports, $, ts) {
         destroy() {
             this.unload();
         }
-        on_before_load() {
-        }
+        on_before_load() {}
         on_data_loaded() {
             this.create_chart();
         }
@@ -60,12 +59,12 @@ var cone_charts = (function (exports, $, ts) {
             this.chart = new Chart(this.canvas, {
                 type: this.type,
                 data: this.data,
-                options: this.options
+                options: this.options,
             });
         }
     }
 
-    $(function () {
+    $(() => {
         ts.ajax.register(ChartTile.initialize, true);
     });
 
